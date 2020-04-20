@@ -1,0 +1,127 @@
+
+<html>
+  <head>
+    <title>Relay</title>
+    <link rel="stylesheet" type="text/css" href="./styles.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+    
+    <style>
+      frc-relay {
+        margin-bottom: 15px;
+      }
+    </style>
+ 
+  </head>
+  <body>
+    <a href="./index.html">Back to all examples</a>
+    <h2>Examples for Relay</h2>
+    
+    <frc-dashboard>
+      <!-- Code for "With attributes" example -->
+      <h3>With attributes</h3>
+
+      <frc-relay value="On"></frc-relay>
+
+      <pre><code class="html">
+        &lt;!-- Code for &quot;With attributes&quot; example --&gt;
+        &lt;frc-relay value=&quot;On&quot;&gt;&lt;/frc-relay&gt;
+      </code></pre>
+
+      <!-- Code for "With NetworkTables" example -->
+      <h3>With NetworkTables</h3>
+
+      <nt-string key="/LiveWindow/Ungrouped/Relay[0]/Value" value="Forward"></nt-string>
+
+      <frc-relay source-key="/LiveWindow/Ungrouped/Relay[0]"></frc-relay>
+
+      <nt-string key="/string1" value="On"></nt-string>
+
+      <frc-relay source-key="/string1"></frc-relay>
+
+      <pre><code class="html">
+        &lt;!-- Code for &quot;With NetworkTables&quot; example --&gt;
+        &lt;nt-string key=&quot;/LiveWindow/Ungrouped/Relay[0]/Value&quot; value=&quot;Forward&quot;&gt;&lt;/nt-string&gt;
+
+        &lt;frc-relay source-key=&quot;/LiveWindow/Ungrouped/Relay[0]&quot;&gt;&lt;/frc-relay&gt;
+
+        &lt;nt-string key=&quot;/string1&quot; value=&quot;On&quot;&gt;&lt;/nt-string&gt;
+
+        &lt;frc-relay source-key=&quot;/string1&quot;&gt;&lt;/frc-relay&gt;
+      </code></pre>
+
+      <!-- Code for "With styles" example -->
+      <h3>With styles</h3>
+
+      <style>
+        .row {
+          width: 500px;
+          height: 100px;
+          flex-direction: row;
+        }
+
+        .grid {
+          width: 200px;
+          height: 200px;
+          flex-direction: row;
+          flex-wrap: wrap;
+        }
+
+        .grid::part(button) {
+          width: 100px;
+          height: 100px;
+          flex: none;
+        }
+      </style>
+
+      <frc-relay class="row"></frc-relay>
+      <frc-relay class="grid"></frc-relay>
+
+      <pre><code class="html">
+        &lt;!-- Code for &quot;With styles&quot; example --&gt;
+        &lt;style&gt;
+          .row {
+            width: 500px;
+            height: 100px;
+            flex-direction: row;
+          }
+
+          .grid {
+            width: 200px;
+            height: 200px;
+            flex-direction: row;
+            flex-wrap: wrap;
+          }
+
+          .grid::part(button) {
+            width: 100px;
+            height: 100px;
+            flex: none;
+          }
+        &lt;/style&gt;
+
+        &lt;frc-relay class=&quot;row&quot;&gt;&lt;/frc-relay&gt;
+        &lt;frc-relay class=&quot;grid&quot;&gt;&lt;/frc-relay&gt;
+      </code></pre>
+
+      <!-- code for "Try it out" section -->
+      <h3>Try it out!</h3>
+
+      <nt-string key="/playground/value" value="Forward"></nt-string>
+    
+      <frc-relay source-key="/playground"></frc-relay>
+
+      <div class="try-it-out">
+        <label>Value</label>
+        <frc-text-view source-key="/playground/value"></frc-text-view>
+      </div>
+
+    </frc-dashboard>
+
+    <script src="./webbit-frc.js"></script>
+
+    <script>
+      hljs.initHighlightingOnLoad();
+    </script>
+  </body>
+</html>
