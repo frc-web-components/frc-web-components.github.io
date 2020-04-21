@@ -1,0 +1,111 @@
+
+<html>
+  <head>
+    <title>Toggle Switch</title>
+    <link rel="stylesheet" type="text/css" href="./styles.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+    <style>
+      frc-toggle-switch {
+        margin-right: 6px;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="./index.html">Back to all examples</a>
+    <h2>Examples for Toggle Switch</h2>
+    
+    <frc-dashboard>
+      <!-- Code for "With attributes" example -->
+      <h3>With attributes</h3>
+
+      <frc-toggle-switch toggled></frc-toggle-switch>
+      <frc-toggle-switch>With text!</frc-toggle-switch>
+
+      <pre><code class="html">
+        &lt;!-- Code for &quot;With attributes&quot; example --&gt;
+        &lt;frc-toggle-switch toggled&gt;&lt;/frc-toggle-switch&gt;
+        &lt;frc-toggle-switch&gt;With text!&lt;/frc-toggle-switch&gt;
+      </code></pre>
+
+      <!-- Code for "With NetworkTables" example -->
+      <h3>With NetworkTables</h3>
+
+      <nt-boolean key="/bool1" value="false"></nt-boolean>
+      <nt-boolean key="/switch1/toggled" value="true"></nt-boolean>
+
+      <frc-toggle-switch source-key="/bool1">/bool1</frc-toggle-switch>
+      <frc-toggle-switch source-key="/switch1">/button1</frc-toggle-switch>
+
+      <pre><code class="html">
+        &lt;!-- Code for &quot;With NetworkTables&quot; example --&gt;
+        &lt;nt-boolean key=&quot;/bool1&quot; value=&quot;false&quot;&gt;&lt;/nt-boolean&gt;
+        &lt;nt-boolean key=&quot;/switch1/toggled&quot; value=&quot;true&quot;&gt;&lt;/nt-boolean&gt;
+
+        &lt;frc-toggle-switch source-key=&quot;/bool1&quot;&gt;/bool1&lt;/frc-toggle-switch&gt;
+        &lt;frc-toggle-switch source-key=&quot;/button1&quot;&gt;/button1&lt;/frc-toggle-switch&gt;
+      </code></pre>
+
+      <!-- Code for "With styles" example -->
+      <h3>With styles</h3>
+
+      <style>
+        .with-styles {
+          width: 300px;
+          height: 80px;
+        }
+
+        .witch-styles[toggled]::part(switch) {
+          background: green;
+        }
+
+        .with-styles::part(knob) {
+          background: purple;
+        }
+      </style>
+
+      <frc-toggle-switch class="with-styles">Styled Button</frc-toggle-switch>
+      <frc-toggle-switch class="with-styles" toggled>Styled Button</frc-toggle-switch>
+
+      <pre><code class="html">
+        &lt;!-- Code for &quot;With styles&quot; example --&gt;
+        &lt;style&gt;
+          .with-styles {
+            width: 300px;
+            height: 80px;
+          }
+
+          .witch-styles[toggled]::part(switch) {
+            background: green;
+          }
+
+          .with-styles::part(knob) {
+            background: purple;
+          }
+        &lt;/style&gt;
+
+        &lt;frc-toggle-switch class=&quot;with-styles&quot;&gt;Styled Button&lt;/frc-toggle-switch&gt;
+        &lt;frc-toggle-switch class=&quot;with-styles&quot; toggled&gt;Styled Button&lt;/frc-toggle-switch&gt;
+      </code></pre>
+
+      <!-- code for "Try it out" section -->
+      <h3>Try it out!</h3>
+
+      <nt-boolean key="/playground/toggled" value="true"></nt-boolean>
+
+      <frc-toggle-switch source-key="/playground">Try me</frc-toggle-switch>
+
+      <div class="try-it-out">
+        <label>Toggled</label>
+        <frc-checkbox source-key="/playground/toggled"></frc-checkbox>
+      </div>
+
+    </frc-dashboard>
+
+    <script src="./webbit-frc.js"></script>
+
+    <script>
+      hljs.initHighlightingOnLoad();
+    </script>
+  </body>
+</html>
