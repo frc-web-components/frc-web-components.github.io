@@ -60,8 +60,11 @@
       <nt-number key="/accel1/min" value="0"></nt-number>
       <nt-number key="/accel1/max" value="10"></nt-number>
       <nt-number key="/accel1/precision" value="8"></nt-number>
+      <nt-number key="/accel1/center" value="0"></nt-number>
       <nt-boolean key="/accel1/hideText" value="false"></nt-boolean>
       <nt-number key="/accel1/numTickMarks" value="7"></nt-number>
+      <nt-string key="/accel1/unit" value="G"></nt-string>
+
 
       <frc-accelerometer source-key="/accel1"></frc-accelerometer>
 
@@ -79,8 +82,11 @@
         &lt;nt-number key=&quot;/accel1/min&quot; value=&quot;0&quot;&gt;&lt;/nt-number&gt;
         &lt;nt-number key=&quot;/accel1/max&quot; value=&quot;10&quot;&gt;&lt;/nt-number&gt;
         &lt;nt-number key=&quot;/accel1/precision&quot; value=&quot;8&quot;&gt;&lt;/nt-number&gt;
+        &lt;nt-number key=&quot;/accel1/center&quot; value=&quot;0&quot;&gt;&lt;/nt-number&gt;
         &lt;nt-boolean key=&quot;/accel1/hideText&quot; value=&quot;false&quot;&gt;&lt;/nt-boolean&gt;
         &lt;nt-number key=&quot;/accel1/numTickMarks&quot; value=&quot;7&quot;&gt;&lt;/nt-number&gt;
+        &lt;nt-string key=&quot;/accel1/unit&quot; value=&quot;G&quot;&gt;&lt;/nt-string&gt;
+
 
         &lt;frc-accelerometer source-key=&quot;/accel1&quot;&gt;&lt;/frc-accelerometer&gt;
 
@@ -161,9 +167,11 @@
       <nt-number key="/playground/value" value="1"></nt-number>
       <nt-number key="/playground/min" value="-10"></nt-number>
       <nt-number key="/playground/max" value="10"></nt-number>
+      <nt-number key="/playground/center" value="0"></nt-number>
       <nt-number key="/playground/precision" value="0"></nt-number>
       <nt-boolean key="/playground/hideText" value="false"></nt-boolean>
       <nt-number key="/playground/numTickMarks" value="7"></nt-number>
+      <nt-string key="/playground/unit" value="g"></nt-string>
 
       <frc-accelerometer source-key="/playground"></frc-accelerometer>
 
@@ -177,6 +185,9 @@
         <label>Max</label>
         <frc-text-view source-key="/playground/max"></frc-text-view>
 
+        <label>Center</label>
+        <frc-text-view source-key="/playground/center"></frc-text-view>
+
         <label>Precision</label>
         <frc-text-view source-key="/playground/precision"></frc-text-view>
 
@@ -185,6 +196,9 @@
 
         <label>Number of Ticks Marks</label>
         <frc-text-view source-key="/playground/numTickMarks"></frc-text-view>
+
+        <label>Unit</label>
+        <frc-text-view source-key="/playground/unit"></frc-text-view>
       </div>
 
     </frc-dashboard>
