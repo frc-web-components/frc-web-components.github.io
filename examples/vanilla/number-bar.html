@@ -5,6 +5,11 @@
     <link rel="stylesheet" type="text/css" href="./styles.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/default.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+    <style>
+      frc-number-bar {
+        margin-bottom: 10px;
+      }
+    </style>
   </head>
   <body>
     <a href="./index.html">Back to all examples</a>
@@ -21,8 +26,9 @@
         min="-10"
         max="20"
         center="5"
-        hide-text
+        precision="3"
         num-tick-marks="3"
+        unit="s"
       ></frc-number-bar>
 
       <frc-number-bar 
@@ -30,6 +36,7 @@
         min="0"
         max="1"
         center="0"
+        hide-text
       ></frc-number-bar>
 
       <pre><code class="html">
@@ -41,8 +48,9 @@
           min=&quot;-10&quot;
           max=&quot;20&quot;
           center=&quot;5&quot;
-          hide-text
+          precision=&quot;3&quot;
           num-tick-marks=&quot;3&quot;
+          unit=&quot;s&quot;
         &gt;&lt;/frc-number-bar&gt;
 
         &lt;frc-number-bar 
@@ -50,18 +58,21 @@
           min=&quot;0&quot;
           max=&quot;1&quot;
           center=&quot;0&quot;
+          hide-text
         &gt;&lt;/frc-number-bar&gt;
       </code></pre>
 
       <!-- Code for "With NetworkTables" example -->
       <h3>With NetworkTables</h3>
 
-      <nt-number key="/bar1/value" value="7"></nt-number>
+      <nt-number key="/bar1/value" value="7.3282"></nt-number>
       <nt-number key="/bar1/min" value="0"></nt-number>
       <nt-number key="/bar1/max" value="10"></nt-number>
       <nt-number key="/bar1/center" value="8"></nt-number>
+      <nt-number key="/bar1/precision" value="2"></nt-number>
       <nt-boolean key="/bar1/hideText" value="false"></nt-boolean>
       <nt-number key="/bar1/numTickMarks" value="7"></nt-number>
+      <nt-string key="/bar1/unit" value="N"></nt-string>
 
       <frc-number-bar source-key="/bar1"></frc-number-bar>
 
@@ -71,12 +82,14 @@
 
       <pre><code class="html">
         &lt;!-- Code for &quot;With NetworkTables&quot; example --&gt;
-        &lt;nt-number key=&quot;/bar1/value&quot; value=&quot;7&quot;&gt;&lt;/nt-number&gt;
+        &lt;nt-number key=&quot;/bar1/value&quot; value=&quot;7.3282&quot;&gt;&lt;/nt-number&gt;
         &lt;nt-number key=&quot;/bar1/min&quot; value=&quot;0&quot;&gt;&lt;/nt-number&gt;
         &lt;nt-number key=&quot;/bar1/max&quot; value=&quot;10&quot;&gt;&lt;/nt-number&gt;
         &lt;nt-number key=&quot;/bar1/center&quot; value=&quot;8&quot;&gt;&lt;/nt-number&gt;
+        &lt;nt-number key=&quot;/bar1/precision&quot; value=&quot;2&quot;&gt;&lt;/nt-number&gt;
         &lt;nt-boolean key=&quot;/bar1/hideText&quot; value=&quot;false&quot;&gt;&lt;/nt-boolean&gt;
         &lt;nt-number key=&quot;/bar1/numTickMarks&quot; value=&quot;7&quot;&gt;&lt;/nt-number&gt;
+        &lt;nt-string key=&quot;/bar1/unit&quot; value=&quot;N&quot;&gt;&lt;/nt-string&gt;
 
         &lt;frc-number-bar source-key=&quot;/bar1&quot;&gt;&lt;/frc-number-bar&gt;
 
@@ -154,8 +167,10 @@
       <nt-number key="/playground/min" value="-10"></nt-number>
       <nt-number key="/playground/max" value="10"></nt-number>
       <nt-number key="/playground/center" value="0"></nt-number>
+      <nt-number key="/playground/precision" value="0"></nt-number>
       <nt-boolean key="/playground/hideText" value="false"></nt-boolean>
       <nt-number key="/playground/numTickMarks" value="7"></nt-number>
+      <nt-string key="/playground/unit" value=""></nt-string>
 
       <frc-number-bar source-key="/playground"></frc-number-bar>
 
@@ -172,11 +187,17 @@
         <label>Center</label>
         <frc-text-view source-key="/playground/center"></frc-text-view>
 
+        <label>Precision</label>
+        <frc-text-view source-key="/playground/precision"></frc-text-view>
+
         <label>Hide Text</label>
         <frc-checkbox source-key="/playground/hideText"></frc-checkbox>
 
         <label>Number of Ticks Marks</label>
         <frc-text-view source-key="/playground/numTickMarks"></frc-text-view>
+
+        <label>Unit</label>
+        <frc-text-view source-key="/playground/unit"></frc-text-view>
       </div>
 
     </frc-dashboard>
