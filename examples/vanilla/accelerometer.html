@@ -3,8 +3,9 @@
   <head>
     <title>Accelerometer</title>
     <link rel="stylesheet" type="text/css" href="./styles.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/default.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+    <script src="https://unpkg.com/@webcomponents/webcomponentsjs@next/webcomponents-loader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.core.min.js"></script>
     <style>
       frc-accelerometer {
         margin-bottom: 10px;
@@ -16,129 +17,65 @@
     <h2>Examples for Accelerometer</h2>
     
     <frc-dashboard>
-      <!-- Code for "With attributes" example -->
-      <h3>With attributes</h3>
 
-      <frc-accelerometer value=".5"></frc-accelerometer>
+      <code-sample title="With attributes">
+        <!-- Code for "With attributes" example -->
+        <frc-accelerometer value=".5"></frc-accelerometer>
 
-      <frc-accelerometer value=".9" min="0"></frc-accelerometer>
+        <frc-accelerometer value=".9" min="0"></frc-accelerometer>
 
-      <frc-accelerometer 
-        value="2"
-        min="-5"
-        max="5"
-        center="0"
-        precision="4"
-        num-tick-marks="3"
-        unit="g"
-      ></frc-accelerometer>
+        <frc-accelerometer 
+          value="2"
+          min="-5"
+          max="5"
+          center="0"
+          precision="4"
+          num-tick-marks="3"
+          unit="g"
+        ></frc-accelerometer>
 
-      <frc-accelerometer 
-        value="-.5"
-        hide-text
-        num-tick-marks="10"
-      ></frc-accelerometer>
-
-      <pre><code class="html">
-        &lt;!-- Code for &quot;With attributes&quot; example --&gt;
-        &lt;frc-accelerometer value=&quot;.5&quot;&gt;&lt;/frc-accelerometer&gt;
-
-        &lt;frc-accelerometer value=&quot;.9&quot; min=&quot;0&quot;&gt;&lt;/frc-accelerometer&gt;
-
-        &lt;frc-accelerometer 
-          value=&quot;2&quot;
-          min=&quot;-5&quot;
-          max=&quot;5&quot;
-          center=&quot;0&quot;
-          precision=&quot;4&quot;
-          num-tick-marks=&quot;3&quot;
-          unit=&quot;g&quot;
-        &gt;&lt;/frc-accelerometer&gt;
-
-        &lt;frc-accelerometer 
-          value=&quot;-.5&quot;
+        <frc-accelerometer 
+          value="-.5"
           hide-text
-          num-tick-marks=&quot;10&quot;
-        &gt;&lt;/frc-accelerometer&gt;
-      </code></pre>
+          num-tick-marks="10"
+        ></frc-accelerometer>
+      </code-sample>
 
-      <!-- Code for "With NetworkTables" example -->
-      <h3>With NetworkTables</h3>
+      <code-sample title="With NetworkTables">
+        <nt-number key="/accel1/value" value="7"></nt-number>
+        <nt-number key="/accel1/min" value="0"></nt-number>
+        <nt-number key="/accel1/max" value="10"></nt-number>
+        <nt-number key="/accel1/precision" value="8"></nt-number>
+        <nt-number key="/accel1/center" value="0"></nt-number>
+        <nt-boolean key="/accel1/hideText" value="false"></nt-boolean>
+        <nt-number key="/accel1/numTickMarks" value="7"></nt-number>
+        <nt-string key="/accel1/unit" value="G"></nt-string>
 
-      <nt-number key="/accel1/value" value="7"></nt-number>
-      <nt-number key="/accel1/min" value="0"></nt-number>
-      <nt-number key="/accel1/max" value="10"></nt-number>
-      <nt-number key="/accel1/precision" value="8"></nt-number>
-      <nt-number key="/accel1/center" value="0"></nt-number>
-      <nt-boolean key="/accel1/hideText" value="false"></nt-boolean>
-      <nt-number key="/accel1/numTickMarks" value="7"></nt-number>
-      <nt-string key="/accel1/unit" value="G"></nt-string>
+        <frc-accelerometer source-key="/accel1"></frc-accelerometer>
 
+        <nt-number key="/num1" value="-.8"></nt-number>
 
-      <frc-accelerometer source-key="/accel1"></frc-accelerometer>
+        <frc-accelerometer source-key="/num1"></frc-accelerometer>
 
-      <nt-number key="/num1" value="-.8"></nt-number>
+        <nt-number key="/LiveWindow/Ungrouped/Accelerometer[0]/Value" value=".5"></nt-number>
 
-      <frc-accelerometer source-key="/num1"></frc-accelerometer>
+        <frc-accelerometer source-key="/LiveWindow/Ungrouped/Accelerometer[0]"></frc-accelerometer>
+      </code-sample>
 
-      <nt-number key="/LiveWindow/Ungrouped/Accelerometer[0]/Value" value=".5"></nt-number>
+      <code-sample title="With attributes and NetworkTables">
+        <nt-number key="/num2" value="3"></nt-number>
 
-      <frc-accelerometer source-key="/LiveWindow/Ungrouped/Accelerometer[0]"></frc-accelerometer>
+        <frc-accelerometer source-key="/num2" max="5" hide-text></frc-accelerometer>
 
-      <pre><code class="html">
-        &lt;!-- Code for &quot;With NetworkTables&quot; example --&gt;
-        &lt;nt-number key=&quot;/accel1/value&quot; value=&quot;7&quot;&gt;&lt;/nt-number&gt;
-        &lt;nt-number key=&quot;/accel1/min&quot; value=&quot;0&quot;&gt;&lt;/nt-number&gt;
-        &lt;nt-number key=&quot;/accel1/max&quot; value=&quot;10&quot;&gt;&lt;/nt-number&gt;
-        &lt;nt-number key=&quot;/accel1/precision&quot; value=&quot;8&quot;&gt;&lt;/nt-number&gt;
-        &lt;nt-number key=&quot;/accel1/center&quot; value=&quot;0&quot;&gt;&lt;/nt-number&gt;
-        &lt;nt-boolean key=&quot;/accel1/hideText&quot; value=&quot;false&quot;&gt;&lt;/nt-boolean&gt;
-        &lt;nt-number key=&quot;/accel1/numTickMarks&quot; value=&quot;7&quot;&gt;&lt;/nt-number&gt;
-        &lt;nt-string key=&quot;/accel1/unit&quot; value=&quot;G&quot;&gt;&lt;/nt-string&gt;
+        <nt-number key="/accel2/min" value="-20"></nt-number>
+        <nt-number key="/accel2/max" value="20"></nt-number>
 
-
-        &lt;frc-accelerometer source-key=&quot;/accel1&quot;&gt;&lt;/frc-accelerometer&gt;
-
-        &lt;nt-number key=&quot;/num1&quot; value=&quot;-.8&quot;&gt;&lt;/nt-number&gt;
-
-        &lt;frc-accelerometer source-key=&quot;/num1&quot;&gt;&lt;/frc-accelerometer&gt;
-
-        &lt;nt-number key=&quot;/LiveWindow/Ungrouped/Accelerometer[0]/Value&quot; value=&quot;.5&quot;&gt;&lt;/nt-number&gt;
-
-        &lt;frc-accelerometer source-key=&quot;/LiveWindow/Ungrouped/Accelerometer[0]&quot;&gt;&lt;/frc-accelerometer&gt;
-      </code></pre>
-
-      <!-- Code for "With attributes and NetworkTables" example -->
-      <h3>With attributes and NetworkTables</h3>
-
-      <nt-number key="/num2" value="3"></nt-number>
-
-      <frc-accelerometer source-key="/num2" max="5" hide-text></frc-accelerometer>
-
-      <nt-number key="/accel2/min" value="-20"></nt-number>
-      <nt-number key="/accel2/max" value="20"></nt-number>
-
-      <frc-accelerometer 
-        source-key="/accel2"
-        value="6" 
-        num-tick-marks="2"
-      ></frc-accelerometer>
-
-      <pre><code class="html">
-        &lt;!-- Code for &quot;With attributes and NetworkTables&quot; example --&gt;
-        &lt;nt-number key=&quot;/num2&quot; value=&quot;3&quot;&gt;&lt;/nt-number&gt;
-
-        &lt;frc-accelerometer source-key=&quot;/num2&quot; max=&quot;5&quot; hide-text&gt;&lt;/frc-accelerometer&gt;
-
-        &lt;nt-number key=&quot;/accel2/min&quot; value=&quot;-20&quot;&gt;&lt;/nt-number&gt;
-        &lt;nt-number key=&quot;/accel2/max&quot; value=&quot;20&quot;&gt;&lt;/nt-number&gt;
-
-        &lt;frc-accelerometer 
-          source-key=&quot;/accel2&quot;
-          value=&quot;6&quot; 
-          num-tick-marks=&quot;2&quot;
-        &gt;&lt;/frc-accelerometer&gt;
-      </code></pre>
+        <frc-accelerometer 
+          source-key="/accel2"
+          value="6" 
+          num-tick-marks="2"
+        ></frc-accelerometer>
+      </code-sample>
 
       <!-- Code for "With styles" example -->
       <h3>With styles</h3>
@@ -212,10 +149,7 @@
 
     </frc-dashboard>
 
-    <script src="./frc-web-components.js"></script>
-
-    <script>
-      hljs.initHighlightingOnLoad();
-    </script>
+    <script src="./code-sample.js" type="module"></script>
+    <script src="./frc-web-components.js" type="module"></script>
   </body>
 </html>

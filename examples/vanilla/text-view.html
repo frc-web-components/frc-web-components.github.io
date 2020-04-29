@@ -3,8 +3,9 @@
   <head>
     <title>Text View</title>
     <link rel="stylesheet" type="text/css" href="./styles.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/default.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+    <script src="https://unpkg.com/@webcomponents/webcomponentsjs@next/webcomponents-loader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.core.min.js"></script>
   
     <style>
       frc-text-view {
@@ -17,85 +18,35 @@
     <h2>Examples for Text View</h2>
     
     <frc-dashboard>
-      <!-- Code for "With attributes" example -->
-      <h3>With attributes</h3>
+      <code-sample title="With attributes">
+        <frc-text-view value='"hello"'></frc-text-view>
+        <frc-text-view value='true'></frc-text-view>
+        <frc-text-view value='10'></frc-text-view>
+        <frc-text-view value='[1,2,3]'></frc-text-view>
+        <frc-text-view value='["a", "b", "c"]'></frc-text-view>
+        <frc-text-view value='[true, false, true]'></frc-text-view>
+      </code-sample>
 
-      <frc-text-view value='"hello"'></frc-text-view>
-      <frc-text-view value='true'></frc-text-view>
-      <frc-text-view value='10'></frc-text-view>
-      <frc-text-view value='[1,2,3]'></frc-text-view>
-      <frc-text-view value='["a", "b", "c"]'></frc-text-view>
-      <frc-text-view value='[true, false, true]'></frc-text-view>
+      <code-sample title="With NetworkTables">
+        <nt-string key="/value1" value="hello"></nt-string>
+        <nt-number key="/value2" value="5"></nt-number>
+        <nt-boolean key="/value3" value="false"></nt-boolean>
+        <nt-string-array key="/value4" value='["string", "array"]'></nt-string-array>
+        <nt-number-array key="/value5" value='[1,2,3]'></nt-number-array>
+        <nt-boolean-array key="/value6" value='[false,true]'></nt-boolean-array>
+        <nt-string key="/textView1/value" value="hello?"></nt-string>
 
-      <pre><code class="html">
-        &lt;!-- Code for &quot;With attributes&quot; example --&gt;
-        &lt;frc-text-view value='&quot;hello&quot;'&gt;&lt;/frc-text-view&gt;
-        &lt;frc-text-view value='true'&gt;&lt;/frc-text-view&gt;
-        &lt;frc-text-view value='10'&gt;&lt;/frc-text-view&gt;
-        &lt;frc-text-view value='[1,2,3]'&gt;&lt;/frc-text-view&gt;
-        &lt;frc-text-view value='[&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]'&gt;&lt;/frc-text-view&gt;
-        &lt;frc-text-view value='[true, false, true]'&gt;&lt;/frc-text-view&gt;
-      </code></pre>
+        <frc-text-view source-key="/value1"></frc-text-view>
+        <frc-text-view source-key="/value2"></frc-text-view>
+        <frc-text-view source-key="/value3"></frc-text-view>
+        <frc-text-view source-key="/value4"></frc-text-view>
+        <frc-text-view source-key="/value5"></frc-text-view>
+        <frc-text-view source-key="/value6"></frc-text-view>
+        <frc-text-view source-key="/textView1"></frc-text-view>
+      </code-sample>
 
-      <!-- Code for "With NetworkTables" example -->
-      <h3>With NetworkTables</h3>
-
-      <nt-string key="/value1" value="hello"></nt-string>
-      <nt-number key="/value2" value="5"></nt-number>
-      <nt-boolean key="/value3" value="false"></nt-boolean>
-      <nt-string-array key="/value4" value='["string", "array"]'></nt-string-array>
-      <nt-number-array key="/value5" value='[1,2,3]'></nt-number-array>
-      <nt-boolean-array key="/value6" value='[false,true]'></nt-boolean-array>
-      <nt-string key="/textView1/value" value="hello?"></nt-string>
-
-      <frc-text-view source-key="/value1"></frc-text-view>
-      <frc-text-view source-key="/value2"></frc-text-view>
-      <frc-text-view source-key="/value3"></frc-text-view>
-      <frc-text-view source-key="/value4"></frc-text-view>
-      <frc-text-view source-key="/value5"></frc-text-view>
-      <frc-text-view source-key="/value6"></frc-text-view>
-      <frc-text-view source-key="/textView1"></frc-text-view>
-
-      <pre><code class="html">
-        &lt;!-- Code for &quot;With NetworkTables&quot; example --&gt;
-        &lt;nt-string key=&quot;/value1&quot; value=&quot;hello&quot;&gt;&lt;/nt-string&gt;
-        &lt;nt-number key=&quot;/value2&quot; value=&quot;5&quot;&gt;&lt;/nt-number&gt;
-        &lt;nt-boolean key=&quot;/value3&quot; value=&quot;false&quot;&gt;&lt;/nt-boolean&gt;
-        &lt;nt-string-array key=&quot;/value4&quot; value='[&quot;string&quot;, &quot;array&quot;]'&gt;&lt;/nt-string-array&gt;
-        &lt;nt-number-array key=&quot;/value5&quot; value='[1,2,3]'&gt;&lt;/nt-number-array&gt;
-        &lt;nt-boolean-array key=&quot;/value6&quot; value='[false,true]'&gt;&lt;/nt-boolean-array&gt;
-        &lt;nt-string key=&quot;/textView1/value&quot; value=&quot;hello?&quot;&gt;&lt;/nt-string&gt;
-
-        &lt;frc-text-view source-key=&quot;/value1&quot;&gt;&lt;/frc-text-view&gt;
-        &lt;frc-text-view source-key=&quot;/value2&quot;&gt;&lt;/frc-text-view&gt;
-        &lt;frc-text-view source-key=&quot;/value3&quot;&gt;&lt;/frc-text-view&gt;
-        &lt;frc-text-view source-key=&quot;/value4&quot;&gt;&lt;/frc-text-view&gt;
-        &lt;frc-text-view source-key=&quot;/value5&quot;&gt;&lt;/frc-text-view&gt;
-        &lt;frc-text-view source-key=&quot;/value6&quot;&gt;&lt;/frc-text-view&gt;
-        &lt;frc-text-view source-key=&quot;/textView1&quot;&gt;&lt;/frc-text-view&gt;
-
-      </code></pre>
-
-      <!-- Code for "With styles" example -->
-      <h3>With styles</h3>
-
-      <style>
-        .with-styles {
-          width: 100%;
-          font-size: 30px;
-          font-family: cursive;
-        }
-
-        .with-styles::part(input) {
-          text-align: center;
-        }
-      </style>
-
-      <frc-text-view class="with-styles" value='"hello everybody"'></frc-text-view>
-
-      <pre><code class="html">
-        &lt;!-- Code for &quot;With styles&quot; example --&gt;
-        &lt;style&gt;
+      <code-sample title="With styles">
+        <style>
           .with-styles {
             width: 100%;
             font-size: 30px;
@@ -105,17 +56,14 @@
           .with-styles::part(input) {
             text-align: center;
           }
-        &lt;/style&gt;
+        </style>
 
-        &lt;frc-text-view class=&quot;with-styles&quot; value='&quot;hello everybody&quot;'&gt;&lt;/frc-text-view&gt;
-      </code></pre>
+        <frc-text-view class="with-styles" value='"hello everybody"'></frc-text-view>
+      </code-sample>
 
     </frc-dashboard>
 
-    <script src="./frc-web-components.js"></script>
-
-    <script>
-      hljs.initHighlightingOnLoad();
-    </script>
+    <script src="./code-sample.js" type="module"></script>
+    <script src="./frc-web-components.js" type="module"></script>
   </body>
 </html>

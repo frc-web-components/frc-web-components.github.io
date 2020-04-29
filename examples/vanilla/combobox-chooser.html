@@ -3,8 +3,9 @@
   <head>
     <title>Combo Box Chooser</title>
     <link rel="stylesheet" type="text/css" href="./styles.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/default.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+    <script src="https://unpkg.com/@webcomponents/webcomponentsjs@next/webcomponents-loader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.core.min.js"></script>
 
   </head>
   <body>
@@ -12,79 +13,40 @@
     <h2>Examples for Combo Box Chooser</h2>
     
     <frc-dashboard>
-      <!-- Code for "With attributes" example -->
-      <h3>With attributes</h3>
+      <code-sample title="With attributes">
+        <frc-combobox-chooser 
+          name="Combo Box"
+          selected="Option 2"
+          default="Option 1"
+          options='["Option 1", "Option 2", "Option 3", "Option 4"]'
+        ></frc-combobox-chooser>
+      </code-sample>
 
-      <frc-combobox-chooser 
-        name="Combo Box"
-        selected="Option 2"
-        default="Option 1"
-        options='["Option 1", "Option 2", "Option 3", "Option 4"]'
-      ></frc-combobox-chooser>
+      <code-sample title="With NetworkTables">
+        <nt-string 
+          key="/SmartDashboard/Autonomous Mode/.name" 
+          value="Autonomous Mode"
+        ></nt-string>
 
-      <pre><code class="html">
-        &lt;!-- Code for &quot;With attributes&quot; example --&gt;
-        &lt;frc-combobox-chooser 
-          name=&quot;Combo Box&quot;
-          selected=&quot;Option 2&quot;
-          default=&quot;Option 1&quot;
-          options='[&quot;Option 1&quot;, &quot;Option 2&quot;, &quot;Option 3&quot;, &quot;Option 4&quot;]'
-        &gt;&lt;/frc-combobox-chooser&gt;
-      </code></pre>
+        <nt-string 
+          key="/SmartDashboard/Autonomous Mode/selected" 
+          value="Drive Backwards"
+        ></nt-string>
 
-      <!-- Code for "With NetworkTables" example -->
-      <h3>With NetworkTables</h3>
+        <nt-string 
+          key="/SmartDashboard/Autonomous Mode/default" 
+          value="None"
+        ></nt-string>
 
-      <nt-string 
-        key="/SmartDashboard/Autonomous Mode/.name" 
-        value="Autonomous Mode"
-      ></nt-string>
+        <nt-string-array
+          key="/SmartDashboard/Autonomous Mode/options" 
+          value='["Drive Backwards", "Drive Forward", "Feature Example", "None"]'
+        ></nt-string-array>
 
-      <nt-string 
-        key="/SmartDashboard/Autonomous Mode/selected" 
-        value="Drive Backwards"
-      ></nt-string>
-
-      <nt-string 
-        key="/SmartDashboard/Autonomous Mode/default" 
-        value="None"
-      ></nt-string>
-
-      <nt-string-array
-        key="/SmartDashboard/Autonomous Mode/options" 
-        value='["Drive Backwards", "Drive Forward", "Feature Example", "None"]'
-      ></nt-string-array>
-
-      <frc-combobox-chooser 
-        source-key="/SmartDashboard/Autonomous Mode"
-      ></frc-combobox-chooser>
-
-      <pre><code class="html">
-        &lt;!-- Code for &quot;With NetworkTables&quot; example --&gt;
-        &lt;nt-string 
-          key=&quot;/SmartDashboard/Autonomous Mode/.name&quot; 
-          value=&quot;Autonomous Mode&quot;
-        &gt;&lt;/nt-string&gt;
-
-        &lt;nt-string 
-          key=&quot;/SmartDashboard/Autonomous Mode/selected&quot; 
-          value=&quot;Drive Backwards&quot;
-        &gt;&lt;/nt-string&gt;
-
-        &lt;nt-string 
-          key=&quot;/SmartDashboard/Autonomous Mode/default&quot; 
-          value=&quot;None&quot;
-        &gt;&lt;/nt-string&gt;
-
-        &lt;nt-string-array
-          key=&quot;/SmartDashboard/Autonomous Mode/options&quot; 
-          value='[&quot;Drive Backwards&quot;, &quot;Drive Forward&quot;, &quot;Feature Example&quot;, &quot;None&quot;]'
-        &gt;&lt;/nt-string-array&gt;
-
-        &lt;frc-combobox-chooser 
-          source-key=&quot;/SmartDashboard/Autonomous Mode&quot;
-        &gt;&lt;/frc-combobox-chooser&gt;
-      </code></pre>
+        <frc-combobox-chooser 
+          source-key="/SmartDashboard/Autonomous Mode"
+        ></frc-combobox-chooser>
+      </code-sample>
 
       <!-- code for "Try it out" section -->
       <h3>Try it out!</h3>
@@ -116,10 +78,7 @@
 
     </frc-dashboard>
 
-    <script src="./frc-web-components.js"></script>
-
-    <script>
-      hljs.initHighlightingOnLoad();
-    </script>
+    <script src="./code-sample.js" type="module"></script>
+    <script src="./frc-web-components.js" type="module"></script>
   </body>
 </html>

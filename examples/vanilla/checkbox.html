@@ -3,8 +3,9 @@
   <head>
     <title>Checkbox</title>
     <link rel="stylesheet" type="text/css" href="./styles.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/default.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+    <script src="https://unpkg.com/@webcomponents/webcomponentsjs@next/webcomponents-loader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.core.min.js"></script>
 
   </head>
   <body>
@@ -12,72 +13,36 @@
     <h2>Examples for Checkbox</h2>
     
     <frc-dashboard>
-      <!-- Code for "With attributes" example -->
-      <h3>With attributes</h3>
-      <frc-checkbox checked></frc-checkbox>
-      <frc-checkbox disabled></frc-checkbox>
 
-      <pre><code class="html">
-        &lt;!-- Code for &quot;With attributes&quot; example --&gt;
-        &lt;frc-checkbox checked&gt;&lt;/frc-checkbox&gt;
-        &lt;frc-checkbox disabled&gt;&lt;/frc-checkbox&gt;
-      </code></pre>
+      <code-sample title="With attributes">
+        <frc-checkbox checked></frc-checkbox>
+        <frc-checkbox disabled></frc-checkbox>
+      </code-sample>
       
-      <!-- Code for "With label" example -->
-      <h3>With label</h3>
-      <frc-checkbox checked>With label</frc-checkbox>
+      <code-sample title="With label">
+        <frc-checkbox checked>With label</frc-checkbox>
+      </code-sample>
 
-      <pre><code class="html">
-        &lt;!-- Code for &quot;With label&quot; example --&gt;
-        &lt;frc-checkbox checked&gt;With label&lt;/frc-checkbox&gt;
-      </code></pre>
+      <code-sample title="With NetworkTables">
+        <nt-boolean key="/bool1" value="true"></nt-boolean>
+        <nt-boolean key="/bool2" value="false"></nt-boolean>
 
-      <!-- Code for "With NetworkTables" example -->
-      <h3>With NetworkTables</h3>
-      <nt-boolean key="/bool1" value="true"></nt-boolean>
-      <nt-boolean key="/bool2" value="false"></nt-boolean>
+        <frc-checkbox source-key="/bool1">/bool1</frc-checkbox>
+        <frc-checkbox source-key="/bool2">/bool2</frc-checkbox>
 
-      <frc-checkbox source-key="/bool1">/bool1</frc-checkbox>
-      <frc-checkbox source-key="/bool2">/bool2</frc-checkbox>
+        <nt-boolean key="/checkbox1/checked" value="true"></nt-boolean>
+        <nt-string key="/checkbox1/disabled" value="true"></nt-string>
 
-      <nt-boolean key="/checkbox1/checked" value="true"></nt-boolean>
-      <nt-string key="/checkbox1/disabled" value="true"></nt-string>
+        <frc-checkbox source-key="/checkbox1">/checkbox1</frc-checkbox>
+      </code-sample>
 
-      <frc-checkbox source-key="/checkbox1">/checkbox1</frc-checkbox>
+      <code-sample title="With attributes and NetworkTables">
+        <nt-boolean key="/checkbox2/checked" value="false"></nt-boolean>
 
-      <pre><code class="html">
-        &lt;!-- Code for &quot;With NetworkTables&quot; example --&gt;
-        &lt;nt-boolean key=&quot;/bool1&quot; value=&quot;true&quot;&gt;&lt;/nt-boolean&gt;
-        &lt;nt-boolean key=&quot;/bool2&quot; value=&quot;false&quot;&gt;&lt;/nt-boolean&gt;
-
-        &lt;frc-checkbox source-key=&quot;/bool1&quot;&gt;/bool1&lt;/frc-checkbox&gt;
-        &lt;frc-checkbox source-key=&quot;/bool2&quot;&gt;/bool2&lt;/frc-checkbox&gt;
-
-        &lt;nt-boolean key=&quot;/checkbox1/checked&quot; value=&quot;true&quot;&gt;&lt;/nt-boolean&gt;
-        &lt;nt-string key=&quot;/checkbox1/disabled&quot; value=&quot;true&quot;&gt;&lt;/nt-string&gt;
-
-        &lt;frc-checkbox source-key=&quot;/checkbox1&quot;&gt;/checkbox1&lt;/frc-checkbox&gt;
-      </code></pre>
-
-      <!-- Code for "With attributes and NetworkTables" example -->
-      <h3>With attributes and NetworkTables</h3>
-
-      <nt-boolean key="/checkbox2/checked" value="false"></nt-boolean>
-
-      <frc-checkbox 
-        source-key="/checkbox2"
-        disabled
-      >/checkbox2</frc-checkbox>
-
-      <pre><code class="html">
-        &lt;!-- Code for &quot;With attributes and NetworkTables&quot; example --&gt;
-        &lt;nt-boolean key=&quot;/checkbox2/checked&quot; value=&quot;false&quot;&gt;&lt;/nt-boolean&gt;
-
-        &lt;frc-checkbox 
-          source-key=&quot;/checkbox2&quot;
-          disabled
-        &gt;/checkbox2&lt;/frc-checkbox&gt;
-      </code></pre>
+        <frc-checkbox source-key="/checkbox2" disabled>
+          /checkbox2
+        </frc-checkbox>
+      </code-sample>
 
       <!-- code for "Try it out" section -->
       <h3>Try it out!</h3>
@@ -98,10 +63,7 @@
 
     </frc-dashboard>
 
-    <script src="./frc-web-components.js"></script>
-
-    <script>
-      hljs.initHighlightingOnLoad();
-    </script>
+    <script src="./code-sample.js" type="module"></script>
+    <script src="./frc-web-components.js" type="module"></script>
   </body>
 </html>

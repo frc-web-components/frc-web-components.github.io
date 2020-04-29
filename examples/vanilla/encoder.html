@@ -1,0 +1,84 @@
+
+<html>
+  <head>
+    <title>Encoder</title>
+    <link rel="stylesheet" type="text/css" href="./styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+    <script src="https://unpkg.com/@webcomponents/webcomponentsjs@next/webcomponents-loader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.core.min.js"></script>
+  </head>
+  <body>
+    <a href="./index.html">Back to all examples</a>
+    <h2>Examples for Encoder</h2>
+    
+    <frc-dashboard>
+
+      <code-sample title="With attributes">
+        <frc-encoder
+          distance="10"
+          speed="2"
+        ></frc-encoder>
+      </code-sample>
+
+      <code-sample title="With NetworkTables">
+        <nt-number key="/LiveWindow/Ungrouped/Encoder/Distance" value="-20"></nt-number>
+        <nt-number key="/LiveWindow/Ungrouped/Encoder/Speed" value="5"></nt-number>
+        <frc-encoder source-key="/LiveWindow/Ungrouped/Encoder"></frc-encoder>
+      </code-sample>
+
+      <code-sample title="With styles">
+        <style>
+          .with-styles {
+            text-transform: uppercase;
+            color: green;
+            width: 600px;
+            height: 150px;
+          }
+
+          .with-styles::part(distance-label) {
+            letter-spacing: 10px;
+          }
+
+          .with-styles::part(speed-label) {
+            font-style: italic;
+            font-family: cursive;
+          }
+
+          .with-styles::part(distance-input) {
+            border: 5px solid green;
+          }
+
+          .with-styles::part(speed-input) {
+            font-size: 50px;
+          }
+        </style>
+        <frc-encoder
+          class="with-styles"
+          distance="20.2342"
+          speed="0"
+        ></frc-encoder>
+      </code-sample>
+
+      <!-- code for "Try it out" section -->
+      <h3>Try it out!</h3>
+
+      <nt-number key="/playground/distance" value="2"></nt-number>
+      <nt-number key="/playground/speed" value="3"></nt-number>
+
+      <frc-encoder source-key="/playground"></frc-encoder>
+
+
+      <div class="try-it-out">
+        <label>Distance</label>
+        <frc-text-view source-key="/playground/distance"></frc-text-view>
+
+        <label>Speed</label>
+        <frc-text-view source-key="/playground/speed"></frc-text-view>
+      </div>
+
+    </frc-dashboard>
+
+    <script src="./code-sample.js" type="module"></script>
+    <script src="./frc-web-components.js" type="module"></script>
+  </body>
+</html>
