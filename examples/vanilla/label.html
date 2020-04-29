@@ -1,0 +1,63 @@
+
+<html>
+  <head>
+    <title>Label</title>
+    <link rel="stylesheet" type="text/css" href="./styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+    <script src="https://unpkg.com/@webcomponents/webcomponentsjs@next/webcomponents-loader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.core.min.js"></script>
+
+  </head>
+  <body>
+    <a href="./index.html">Back to all examples</a>
+    <h2>Examples for Label</h2>
+    
+    <frc-dashboard>
+
+      <code-sample title="With attributes">
+        <frc-label text="This is a label."></frc-label>
+        <em>
+          <frc-label text="It will take on the styles of its parent."></frc-label>
+        </em>
+        <a href="#">
+          You can use it to display
+          <frc-label text="variable"></frc-label>
+          text in your HTML.
+        </a>
+      </code-sample>
+
+      <code-sample title="With NetworkTables">
+        <nt-string key="/label1/text" value="/label1"></nt-string>
+        <nt-string key="/string1" value="/string1"></nt-string>
+
+        <p><frc-label source-key="/label1"></frc-label></p>
+        <p><frc-label source-key="/string1"></frc-label></p>
+
+        <nt-boolean key="/bool1" value="false"></nt-boolean>
+        <nt-number key="/num1" value="10"></nt-number>
+
+        <p><frc-label source-key="/bool1"></frc-label></p>
+        <p><frc-label source-key="/num1"></frc-label></p>
+      </code-sample>
+
+      <!-- code for "Try it out" section -->
+      <h3>Try it out!</h3>
+
+      <nt-string key="/playground/text" value="Clint"></nt-string>
+      <p>
+        My name is 
+        <strong><frc-label source-key="/playground"></frc-label></strong>.
+      </p>
+
+      <div class="try-it-out">
+        <label>Text</label>
+        <frc-text-view source-key="/playground/text"></frc-text-view>
+      </div>
+
+
+    </frc-dashboard>
+
+    <script src="./code-sample.js" type="module"></script>
+    <script src="./frc-web-components.js" type="module"></script>
+  </body>
+</html>
