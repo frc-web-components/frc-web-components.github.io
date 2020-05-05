@@ -1,0 +1,170 @@
+
+<html>
+  <head>
+    <title>Power Distribution Panel</title>
+    <link rel="stylesheet" type="text/css" href="./styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+    <script src="https://unpkg.com/@webcomponents/webcomponentsjs@next/webcomponents-loader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.core.min.js"></script>
+    <style>
+      frc-3-axis-accelerometer {
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="./index.html">Back to all examples</a>
+    <h2>Examples for Power Distribution Panel</h2>
+    
+    <frc-dashboard>
+      <code-sample title="With attributes">
+        <frc-pdp
+          voltage="15"
+          total-current="400"
+          chan0="30"
+          chan1="0"
+          chan2="0"
+          chan3="0"
+          chan4="0"
+          chan5="5.3"
+          chan6="0"
+          chan7="0"
+          chan8="0"
+          chan9="0"
+          chan10="3.2372"
+          chan11="0"
+          chan12="10"
+          chan13="0"
+          chan14="35"
+          chan15="40"
+        ></frc-pdp>
+      </code-sample>
+
+      <code-sample title="With NetworkTables">
+        <nt-number key="/panel/chan0" value="40"></nt-number>
+        <nt-number key="/panel/chan1" value="0"></nt-number>
+        <nt-number key="/panel/chan2" value="0"></nt-number>
+        <nt-number key="/panel/chan3" value="0"></nt-number>
+        <nt-number key="/panel/chan4" value="0"></nt-number>
+        <nt-number key="/panel/chan5" value="0"></nt-number>
+        <nt-number key="/panel/chan6" value="0"></nt-number>
+        <nt-number key="/panel/chan7" value="0"></nt-number>
+        <nt-number key="/panel/chan8" value="20"></nt-number>
+        <nt-number key="/panel/chan9" value="30"></nt-number>
+        <nt-number key="/panel/chan10" value="0"></nt-number>
+        <nt-number key="/panel/chan11" value="0"></nt-number>
+        <nt-number key="/panel/chan12" value="0"></nt-number>
+        <nt-number key="/panel/chan13" value="0"></nt-number>
+        <nt-number key="/panel/chan14" value="0"></nt-number>
+        <nt-number key="/panel/chan15" value="0"></nt-number>
+        <nt-number key="/panel/voltage" value="10"></nt-number>
+        <nt-number key="/panel/totalCurrent" value="500"></nt-number>
+
+        <frc-pdp source-key="/panel"></frc-panel>
+      </code-sample>
+
+      <code-sample title="With Labels">
+        <frc-pdp chan0="10" chan1="5" chan2="20" chan13="10" voltage="12" total-current="45">
+          <span slot="channel-label0">Left Drive Motor</span>
+          <span slot="channel-label1">Right Drive Motor</span>
+          <span slot="channel-label2">Lift Motor</span>
+          <span slot="channel-label13">Intake</span>
+        </frc-pdp>
+      </code-sample>
+
+      <code-sample title="With styles">
+        <style>
+          .with-styles {
+            width: 700px;
+          }
+        </style>
+
+        <frc-pdp class="with-styles"></frc-pdp>
+      </code-sample>
+
+      <!-- code for "Try it out" section -->
+      <h3>Try it out!</h3>
+
+      <nt-number key="/playground/voltage" value="10"></nt-number>
+      <nt-number key="/playground/totalCurrent" value="500"></nt-number>
+      <nt-number key="/playground/chan0" value="40"></nt-number>
+      <nt-number key="/playground/chan1" value="0"></nt-number>
+      <nt-number key="/playground/chan2" value="0"></nt-number>
+      <nt-number key="/playground/chan3" value="0"></nt-number>
+      <nt-number key="/playground/chan4" value="0"></nt-number>
+      <nt-number key="/playground/chan5" value="0"></nt-number>
+      <nt-number key="/playground/chan6" value="0"></nt-number>
+      <nt-number key="/playground/chan7" value="0"></nt-number>
+      <nt-number key="/playground/chan8" value="20"></nt-number>
+      <nt-number key="/playground/chan9" value="30"></nt-number>
+      <nt-number key="/playground/chan10" value="0"></nt-number>
+      <nt-number key="/playground/chan11" value="0"></nt-number>
+      <nt-number key="/playground/chan12" value="0"></nt-number>
+      <nt-number key="/playground/chan13" value="0"></nt-number>
+      <nt-number key="/playground/chan14" value="0"></nt-number>
+      <nt-number key="/playground/chan15" value="0"></nt-number>
+
+      <frc-pdp source-key="/playground"></frc-pdp>
+
+      <div class="try-it-out">
+        <label>Voltage</label>
+        <frc-text-view source-key="/playground/voltage"></frc-text-view>
+
+        <label>TotalCurrent</label>
+        <frc-text-view source-key="/playground/totalCurrent"></frc-text-view>
+
+        <label>Channel 0</label>
+        <frc-text-view source-key="/playground/chan0"></frc-text-view>
+
+        <label>Channel 1</label>
+        <frc-text-view source-key="/playground/chan1"></frc-text-view>
+
+        <label>Channel 2</label>
+        <frc-text-view source-key="/playground/chan2"></frc-text-view>
+
+        <label>Channel 3</label>
+        <frc-text-view source-key="/playground/chan3"></frc-text-view>
+
+        <label>Channel 4</label>
+        <frc-text-view source-key="/playground/chan4"></frc-text-view>
+
+        <label>Channel 5</label>
+        <frc-text-view source-key="/playground/chan5"></frc-text-view>
+
+        <label>Channel 6</label>
+        <frc-text-view source-key="/playground/chan6"></frc-text-view>
+
+        <label>Channel 7</label>
+        <frc-text-view source-key="/playground/chan7"></frc-text-view>
+
+        <label>Channel 8</label>
+        <frc-text-view source-key="/playground/chan8"></frc-text-view>
+
+        <label>Channel 9</label>
+        <frc-text-view source-key="/playground/chan9"></frc-text-view>
+
+        <label>Channel 10</label>
+        <frc-text-view source-key="/playground/chan10"></frc-text-view>
+
+        <label>Channel 11</label>
+        <frc-text-view source-key="/playground/chan11"></frc-text-view>
+
+        <label>Channel 12</label>
+        <frc-text-view source-key="/playground/chan12"></frc-text-view>
+
+        <label>Channel 13</label>
+        <frc-text-view source-key="/playground/chan13"></frc-text-view>
+
+        <label>Channel 14</label>
+        <frc-text-view source-key="/playground/chan14"></frc-text-view>
+
+        <label>Channel 15</label>
+        <frc-text-view source-key="/playground/chan15"></frc-text-view>
+      </div>
+
+    </frc-dashboard>
+
+    <script src="./code-sample.js" type="module"></script>
+    <script src="./frc-web-components.js" type="module"></script>
+  </body>
+</html>
