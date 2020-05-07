@@ -1,25 +1,25 @@
 
 <html>
   <head>
-    <title>Combo Box Chooser</title>
+    <title>Combo Box</title>
     <link rel="stylesheet" type="text/css" href="./styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
     <script src="https://unpkg.com/@webcomponents/webcomponentsjs@next/webcomponents-loader.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js"></script>
 
   </head>
   <body>
     <a href="./index.html">Back to all examples</a>
-    <h2>Examples for Combo Box Chooser</h2>
+    <h2>Examples for Combo Box</h2>
     
     <frc-dashboard>
       <code-sample title="With attributes">
-        <frc-combobox-chooser 
+        <frc-combo-box 
           name="Combo Box"
           selected="Option 2"
           default="Option 1"
           options='["Option 1", "Option 2", "Option 3", "Option 4"]'
-        ></frc-combobox-chooser>
+        ></frc-combo-box>
       </code-sample>
 
       <code-sample title="With NetworkTables">
@@ -43,9 +43,9 @@
           value='["Drive Backwards", "Drive Forward", "Feature Example", "None"]'
         ></nt-string-array>
 
-        <frc-combobox-chooser 
+        <frc-combo-box 
           source-key="/SmartDashboard/Autonomous Mode"
-        ></frc-combobox-chooser>
+        ></frc-combo-box>
       </code-sample>
 
       <!-- code for "Try it out" section -->
@@ -59,7 +59,7 @@
         value='["A", "B", "C", "D"]'
       ></nt-string-array>
 
-      <frc-combobox-chooser source-key="/playground"></frc-combobox-chooser>
+      <frc-combo-box source-key="/playground"></frc-combo-box>
 
       <div class="try-it-out">
         <label>Name</label>

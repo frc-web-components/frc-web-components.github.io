@@ -14,17 +14,9 @@ h3 {
   border-top: 1px solid #ccc;
 }
 
-.try-it-out label {
-  font-size: 17px;
-  font-family: sans-serif;
-  color:#555;
-  margin-bottom: 15px;
+.try-it-out frc-checkbox-group {
+  margin-top: 20px;
   display: block;
-}
-
-.try-it-out frc-text-view, .try-it-out frc-checkbox {
-  width: 200px;
-  margin-bottom: 20px;
 }
 
 .CodeMirror {

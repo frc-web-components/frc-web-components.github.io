@@ -41,6 +41,18 @@ class CodeSample extends LitElement {
     
     const newHtml = lines
       .map(line => line.replace(whiteSpaceToRemove, ''))
+      .map(line => {
+        const escapedArrays = [...line.matchAll(/(\=\&quot;\[)(&amp;quot;.*?&amp;quot;)(\]&quot;)/g)];
+        escapedArrays.forEach(match => {
+          const [original, start, middle, end] = match;
+          let newStart = _.unescape(start).replace('"', "'");
+          let newMiddle = _.unescape(middle);
+          let newEnd = _.unescape(end).replace('"', "'");
+          const newString = newStart + newMiddle + newEnd;
+          line = line.replace(original, newString);
+        });
+        return line;
+      })
       .join('\n');
 
     const titleComment = _.escape(`<!-- Code for "${this.title}" example -->`);

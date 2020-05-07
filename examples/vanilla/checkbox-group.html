@@ -1,7 +1,7 @@
 
 <html>
   <head>
-    <title>Checkbox</title>
+    <title>Checkbox Group</title>
     <link rel="stylesheet" type="text/css" href="./styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
     <script src="https://unpkg.com/@webcomponents/webcomponentsjs@next/webcomponents-loader.js"></script>
@@ -10,13 +10,16 @@
   </head>
   <body>
     <a href="./index.html">Back to all examples</a>
-    <h2>Examples for Checkbox</h2>
+    <h2>Examples for Checkbox Group</h2>
     
     <frc-dashboard>
 
       <code-sample title="With attributes">
-        <frc-checkbox checked></frc-checkbox>
-        <frc-checkbox disabled></frc-checkbox>
+        <frc-checkbox-group value='["1", "3"]'>
+          <frc-checkbox value="1">1</frc-checkbox>
+          <frc-checkbox value="2">2</frc-checkbox>
+          <frc-checkbox value="3">3</frc-checkbox>
+        </frc-checkbox-group>
       </code-sample>
       
       <code-sample title="With label">
