@@ -53,6 +53,9 @@ class CodeSample extends LitElement {
         });
         return line;
       })
+      .map(line => {
+          return line.replace('=&quot;&quot;', '');
+      })
       .join('\n');
 
     const titleComment = _.escape(`<!-- Code for "${this.title}" example -->`);

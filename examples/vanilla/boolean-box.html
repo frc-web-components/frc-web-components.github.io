@@ -80,14 +80,22 @@
       <frc-boolean-box source-key="/playground"></frc-boolean-box>
 
       <div class="try-it-out">
-        <label>Value</label>
-        <frc-checkbox source-key="/playground/value"></frc-checkbox>
 
-        <label>True Color</label>
-        <frc-text-view source-key="/playground/trueColor"></frc-text-view>
+        <frc-text-field 
+          label="True Color" 
+          theme="small" 
+          source-key="/playground/trueColor"
+        ></frc-text-field>
 
-        <label>False Color</label>
-        <frc-text-view source-key="/playground/falseColor"></frc-text-view>
+        <frc-text-field 
+          label="False Color" 
+          theme="small" 
+          source-key="/playground/falseColor"
+        ></frc-text-field>
+
+        <frc-checkbox-group theme="horizontal">
+          <frc-checkbox source-key="/playground/value">Value</frc-checkbox>
+        </frc-checkbox-group>
       </div>
 
     </frc-dashboard>

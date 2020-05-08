@@ -51,14 +51,27 @@
       <frc-gauge source-key="/playground"></frc-gauge>
 
       <div class="try-it-out">
-        <label>Value</label>
-        <frc-text-view source-key="/playground/value"></frc-text-view>
 
-        <label>Min</label>
-        <frc-text-view source-key="/playground/min"></frc-text-view>
-        
-        <label>Max</label>
-        <frc-text-view source-key="/playground/max"></frc-text-view>
+        <frc-number-field 
+          label="Value" 
+          theme="small" 
+          source-key="/playground/value"
+          has-controls
+        ></frc-number-field>
+
+        <frc-number-field 
+          label="Min" 
+          theme="small" 
+          source-key="/playground/min"
+          has-controls
+        ></frc-number-field>
+
+        <frc-number-field 
+          label="Max" 
+          theme="small" 
+          source-key="/playground/max"
+          has-controls
+        ></frc-number-field>
       </div>
 
     </frc-dashboard>
