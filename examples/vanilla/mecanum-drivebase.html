@@ -88,17 +88,46 @@
       ></frc-mecanum-drivebase>
 
       <div class="try-it-out">
-        <label>Front Left Motor Speed</label>
-        <frc-text-view source-key="/playground/Front Left Motor Speed"></frc-text-view>
 
-        <label>Front Right Motor Speed</label>
-        <frc-text-view source-key="/playground/Front Right Motor Speed"></frc-text-view>
+        <frc-number-field 
+          label="Front Left Motor Speed" 
+          theme="small" 
+          source-key="/playground/Front Left Motor Speed"
+          has-controls
+          min="-1"
+          max="1"
+          step=".1"
+        ></frc-number-field>
 
-        <label>Rear Right Motor Speed</label>
-        <frc-text-view source-key="/playground/Rear Right Motor Speed"></frc-text-view>
+        <frc-number-field 
+          label="Front Right Motor Speed" 
+          theme="small" 
+          source-key="/playground/Front Right Motor Speed"
+          has-controls
+          min="-1"
+          max="1"
+          step=".1"
+        ></frc-number-field>
 
-        <label>Rear Right Motor Speed</label>
-        <frc-text-view source-key="/playground/Rear Right Motor Speed"></frc-text-view>
+        <frc-number-field 
+          label="Rear Left Motor Speed" 
+          theme="small" 
+          source-key="/playground/Rear Left Motor Speed"
+          has-controls
+          min="-1"
+          max="1"
+          step=".1"
+        ></frc-number-field>
+
+        <frc-number-field 
+          label="Rear Right Motor Speed" 
+          theme="small" 
+          source-key="/playground/Rear Right Motor Speed"
+          has-controls
+          min="-1"
+          max="1"
+          step=".1"
+        ></frc-number-field>
       </div>
 
     </frc-dashboard>

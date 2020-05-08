@@ -52,17 +52,33 @@
 
 
       <div class="try-it-out">
-        <label>Match Type</label>
-        <frc-text-view source-key="/playground/MatchType"></frc-text-view>
 
-        <label>Match Number</label>
-        <frc-text-view source-key="/playground/MatchNumber"></frc-text-view>
+        <frc-number-field 
+          label="Match Type" 
+          theme="small" 
+          source-key="/playground/MatchType"
+          has-controls
+        ></frc-number-field>
 
-        <label>Event Name</label>
-        <frc-text-view source-key="/playground/EventName"></frc-text-view>
+        <frc-number-field 
+          label="Match Number" 
+          theme="small" 
+          source-key="/playground/MatchNumber"
+          has-controls
+        ></frc-number-field>
 
-        <label>FMS Control Data</label>
-        <frc-text-view source-key="/playground/FMSControlData"></frc-text-view>
+        <frc-number-field 
+          label="FMS Control Data" 
+          theme="small" 
+          source-key="/playground/FMSControlData"
+          has-controls
+        ></frc-number-field>
+
+        <frc-text-field 
+          label="Event Name" 
+          theme="small" 
+          source-key="/playground/EventName"
+        ></frc-text-field>
       </div>
 
 

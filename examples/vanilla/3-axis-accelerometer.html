@@ -104,35 +104,72 @@
       <frc-3-axis-accelerometer source-key="/playground"></frc-3-axis-accelerometer>
 
       <div class="try-it-out">
-        <label>X</label>
-        <frc-text-view source-key="/playground/x"></frc-text-view>
 
-        <label>Y</label>
-        <frc-text-view source-key="/playground/y"></frc-text-view>
+        <frc-number-field 
+          label="X" 
+          theme="small" 
+          source-key="/playground/x"
+          has-controls
+        ></frc-number-field>
 
-        <label>Z</label>
-        <frc-text-view source-key="/playground/z"></frc-text-view>
+        <frc-number-field 
+          label="Y" 
+          theme="small" 
+          source-key="/playground/y"
+          has-controls
+        ></frc-number-field>
 
-        <label>Min</label>
-        <frc-text-view source-key="/playground/min"></frc-text-view>
-        
-        <label>Max</label>
-        <frc-text-view source-key="/playground/max"></frc-text-view>
+        <frc-number-field 
+          label="Z" 
+          theme="small" 
+          source-key="/playground/z"
+          has-controls
+        ></frc-number-field>
 
-        <label>Center</label>
-        <frc-text-view source-key="/playground/center"></frc-text-view>
+        <frc-number-field 
+          label="Min" 
+          theme="small" 
+          source-key="/playground/min"
+          has-controls
+        ></frc-number-field>
 
-        <label>Precision</label>
-        <frc-text-view source-key="/playground/precision"></frc-text-view>
+        <frc-number-field 
+          label="Max" 
+          theme="small" 
+          source-key="/playground/max"
+          has-controls
+        ></frc-number-field>
 
-        <label>Hide Text</label>
-        <frc-checkbox source-key="/playground/hideText"></frc-checkbox>
+        <frc-number-field 
+          label="Center" 
+          theme="small" 
+          source-key="/playground/center"
+          has-controls
+        ></frc-number-field>
 
-        <label>Number of Ticks Marks</label>
-        <frc-text-view source-key="/playground/numTickMarks"></frc-text-view>
+        <frc-number-field 
+          label="Precision" 
+          theme="small" 
+          source-key="/playground/precision"
+          has-controls
+        ></frc-number-field>
 
-        <label>Unit</label>
-        <frc-text-view source-key="/playground/unit"></frc-text-view>
+        <frc-number-field 
+          label="Number of Ticks Marks" 
+          theme="small" 
+          source-key="/playground/numTickMarks"
+          has-controls
+        ></frc-number-field>
+
+        <frc-text-field 
+          label="Unit" 
+          theme="small" 
+          source-key="/playground/unit"
+        ></frc-text-field>
+
+        <frc-checkbox-group theme="horizontal">
+          <frc-checkbox source-key="/playground/hideText">Hide Text</frc-checkbox>
+        </frc-checkbox-group>
       </div>
 
     </frc-dashboard>

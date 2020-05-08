@@ -68,11 +68,26 @@
       ></frc-differential-drivebase>
 
       <div class="try-it-out">
-        <label>Left Motor Speed</label>
-        <frc-text-view source-key="/playground/Left Motor Speed"></frc-text-view>
 
-        <label>Right Motor Speed</label>
-        <frc-text-view source-key="/playground/Right Motor Speed"></frc-text-view>
+        <frc-number-field 
+          label="Left Motor Speed" 
+          theme="small" 
+          source-key="/playground/Left Motor Speed"
+          has-controls
+          min="-1"
+          max="1"
+          step=".1"
+        ></frc-number-field>
+
+        <frc-number-field 
+          label="Right Motor Speed" 
+          theme="small" 
+          source-key="/playground/Right Motor Speed"
+          has-controls
+          min="-1"
+          max="1"
+          step=".1"
+        ></frc-number-field>
       </div>
 
     </frc-dashboard>

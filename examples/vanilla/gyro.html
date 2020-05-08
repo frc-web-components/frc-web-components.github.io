@@ -56,14 +56,26 @@
       <frc-gyro source-key="/playground"></frc-gyro>
 
       <div class="try-it-out">
-        <label>Value</label>
-        <frc-text-view source-key="/playground/value"></frc-text-view>
 
-        <label>Precision</label>
-        <frc-text-view source-key="/playground/precision"></frc-text-view>
+        <frc-number-field 
+          label="Value" 
+          theme="small" 
+          source-key="/playground/value"
+          has-controls
+        ></frc-number-field>
 
-        <label>Hide Label</label>
-        <frc-checkbox source-key="/playground/hideLabel"></frc-checkbox>
+        <frc-number-field 
+          label="Precision" 
+          theme="small" 
+          source-key="/playground/precision"
+          has-controls
+          min="0"
+          max="100"
+        ></frc-number-field>
+
+        <frc-checkbox-group theme="horizontal">
+          <frc-checkbox source-key="/playground/hideLabel">Hide Label</frc-checkbox>
+        </frc-checkbox-group>
       </div>
 
     </frc-dashboard>
