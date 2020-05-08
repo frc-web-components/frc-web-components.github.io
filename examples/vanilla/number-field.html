@@ -1,0 +1,241 @@
+
+<html>
+  <head>
+    <title>Number Field</title>
+    <link rel="stylesheet" type="text/css" href="./styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+    <script src="https://unpkg.com/@webcomponents/webcomponentsjs@next/webcomponents-loader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js"></script>
+  
+    <style>
+      frc-text-view {
+        margin-bottom: 15px;
+      }
+
+      .info {
+        font-size: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="./index.html">Back to all examples</a>
+    <p>
+      The <em>frc-number-field</em> component is a thin wrapper around
+      the <em>vaadin-number-field</em> component. For documentation on
+      their component, visit their website
+      <a href="https://vaadin.com/components/vaadin-number-field/html-examples">here</a>.
+    </p>
+
+    <h2>Examples for Number Field</h2>
+    
+    <frc-dashboard>
+
+      <code-sample title="Basic text field attributes">
+        <frc-number-field label="Label"></frc-number-field>
+        <frc-number-field placeholder="Placeholder"></frc-number-field>
+        <frc-number-field value="100"></frc-number-field>
+      </code-sample>
+
+      <code-sample title="Has controls attribute">
+        <frc-number-field has-controls value="5"></frc-number-field>
+      </code-sample>
+
+      <code-sample title="Value limit attributes">
+        <frc-number-field value="1" min="1" max="10" has-controls></frc-number-field>
+      </code-sample>
+
+      <code-sample title="Step attribute">
+        <frc-number-field step="0.2" min="0" max="10" has-controls></frc-number-field>
+      </code-sample>
+
+      <code-sample title="Disabled and read-only attributes">
+        <frc-number-field label="Disabled" value="19" disabled></frc-number-field>
+        <frc-number-field label="Read-only" value="34" readonly></frc-number-field>
+      </code-sample>
+
+      <code-sample title="Autoselect attribute">
+        <frc-number-field autoselect label="Autoselect" value="1234"></frc-number-field>
+      </code-sample>
+
+      <code-sample title="Display the clear button attribute">
+        <frc-number-field clear-button-visible value="5"></frc-number-field>
+      </code-sample>
+
+      <code-sample title="Required input attribute">
+        <frc-number-field required label="Team #" error-message="Please enter your team #"></frc-number-field>
+      </code-sample>
+
+      <code-sample title="theme attribute">
+        <p>Text align</p>
+        <frc-number-field value="1"></frc-number-field>
+        <frc-number-field value="2" theme="align-center"></frc-number-field>
+        <frc-number-field value="3" theme="align-right"></frc-number-field>
+
+        <p>Small size</p>
+        <frc-number-field theme="small" label="Label" placeholder="number field"></frc-number-field>
+      </code-sample>
+
+      <code-sample title="Prefix and suffix">
+        <frc-number-field label="Price" value="100">
+          <div slot="prefix">$</div>
+        </frc-number-field>
+        
+        <frc-number-field label="Speed" value="100" theme="align-right">
+          <div slot="suffix">ft/s</div>
+        </frc-number-field>
+      </code-sample>
+
+      <code-sample title="With NetworkTables">
+        <nt-number key="/num1" value="5"></nt-number>
+
+        <frc-number-field source-key="/num1"></frc-number-field>
+        <br/>
+
+        <nt-number key="/field/value" value="10"></nt-number>
+        <nt-boolean key="/field/hasControls" value="true"></nt-boolean>
+        <nt-number key="/field/min" value="-20"></nt-number>
+        <nt-number key="/field/max" value="20"></nt-number>
+        <nt-number key="/field/step" value="5"></nt-number>
+        <nt-string key="/field/label" value="Label"></nt-string>
+        <nt-string key="/field/placeholder" value="Placeholder"></nt-string>
+        <nt-boolean key="/field/disabled" value="false"></nt-boolean>
+        <nt-boolean key="/field/readonly" value="false"></nt-boolean>
+        <nt-boolean key="/field/autoselect" value="true"></nt-boolean>
+        <nt-boolean key="/field/clearButtonVisible" value="true"></nt-boolean>
+        <nt-boolean key="/field/required" value="true"></nt-boolean>
+        <nt-string key="/field/errorMessage" value="Some Error"></nt-string>
+        <nt-string key="/field/theme" value="align-center"></nt-string>
+
+        <frc-number-field source-key="/field"></frc-number-field>
+      </code-sample>
+
+      <code-sample title="With attributes and NetworkTables">
+        <nt-number key="/field2/value" value="-2"></nt-number>
+        <nt-string key="/field2/label" value="Label"></nt-string>
+        <nt-boolean key="/field2/hasControls" value="true"></nt-boolean>
+
+        <frc-number-field source-key="/field2" min="-4" theme="align-right"></frc-number-field>
+      </code-sample>
+
+      <code-sample title="With styles">
+        <style>
+
+          .with-styles::part(value) {
+            font-weight: bold;
+            text-transform: uppercase;
+            color: red;
+          }
+
+          .with-styles::part(label) {
+            font-family: monospace;
+            font-size: 20px;
+          }
+
+          .with-styles::part(error-message) {
+            letter-spacing: 5px;
+          }
+
+          .with-styles::part(input-field) {
+            border: 1px solid #ccc;
+            background-color: #fff;
+            height: 60px;
+          }
+
+          .with-styles[focused]::part(input-field) {
+            border: 5px solid green;
+            background-color: blue;
+          }
+        </style>
+
+        <frc-number-field class="with-styles" label="Label" required has-controls error-message="This is required."></frc-number-field>
+      </code-sample>
+
+      <!-- code for "Try it out" section -->
+      <h3>Try it out!</h3>
+
+      <nt-number key="/playground/value" value="10"></nt-number>
+      <nt-boolean key="/playground/hasControls" value="true"></nt-boolean>
+      <nt-number key="/playground/min" value="-20"></nt-number>
+      <nt-number key="/playground/max" value="20"></nt-number>
+      <nt-number key="/playground/step" value="5"></nt-number>
+      <nt-string key="/playground/label" value="Try it out!"></nt-string>
+      <nt-string key="/playground/placeholder" value="Placeholder"></nt-string>
+      <nt-boolean key="/playground/disabled" value="false"></nt-boolean>
+      <nt-boolean key="/playground/readonly" value="false"></nt-boolean>
+      <nt-boolean key="/playground/autoselect" value="true"></nt-boolean>
+      <nt-boolean key="/playground/clearButtonVisible" value="true"></nt-boolean>
+      <nt-boolean key="/playground/required" value="true"></nt-boolean>
+      <nt-string key="/playground/errorMessage" value="Some Error"></nt-string>
+      <nt-string key="/playground/theme" value="align-center"></nt-string>
+
+      <frc-number-field source-key="/playground"></frc-number-field>
+
+      <div class="try-it-out">
+        <frc-number-field 
+          label="Value" 
+          theme="small" 
+          source-key="/playground/value"
+          has-controls
+        ></frc-number-field>
+
+        <frc-number-field 
+          label="Min" 
+          theme="small" 
+          source-key="/playground/min"
+          has-controls
+        ></frc-number-field>
+
+        <frc-number-field 
+          label="Max" 
+          theme="small" 
+          source-key="/playground/max"
+          has-controls
+        ></frc-number-field>
+
+        <frc-number-field 
+          label="Step" 
+          theme="small" 
+          source-key="/playground/step"
+          has-controls
+        ></frc-number-field>
+
+        <frc-text-field 
+          label="label" 
+          theme="small" 
+          source-key="/playground/label"
+        ></frc-text-field>
+
+        <frc-text-field 
+          label="Placeholder" 
+          theme="small" 
+          source-key="/playground/placeholder"
+        ></frc-text-field>
+
+        <frc-text-field 
+          label="Error Message" 
+          theme="small" 
+          source-key="/playground/errorMessage"
+        ></frc-text-field>
+
+        <frc-text-field 
+          label="Theme" 
+          theme="small" 
+          source-key="/playground/theme"
+        ></frc-text-field>
+
+        <frc-checkbox-group theme="horizontal">
+          <frc-checkbox source-key="/playground/hasControls" value="1">Has Controls</frc-checkbox>
+          <frc-checkbox source-key="/playground/disabled" value="2">Disabled</frc-checkbox>
+          <frc-checkbox source-key="/playground/readonly" value="3">Read-only</frc-checkbox>
+          <frc-checkbox source-key="/playground/autoselect" value="4">Autoselect</frc-checkbox>
+          <frc-checkbox source-key="/playground/clearButtonVisible" value="5">Clear button visible</frc-checkbox>
+          <frc-checkbox source-key="/playground/required" value="6">Required</frc-checkbox>
+        </frc-checkbox-group>
+      </div>
+
+    </frc-dashboard>
+
+    <script src="./code-sample.js" type="module"></script>
+    <script src="./frc-web-components.js" type="module"></script>
+  </body>
+</html>
