@@ -259,6 +259,12 @@
               <frc-text-view source-key="/trajectory/ys"></frc-text-view>
             </div>
             <frc-combo-box source-key="/trajectory/unit" options='["in", "ft", "yd", "mm", "cm", "m"]' name="Trajectory Unit"></frc-combo-box>
+            <frc-number-field source-key="/trajectory/startRotation" label="Trajectory Start Rotation" has-controls step="10" theme="align-right">
+              <span slot="suffix">&deg;</span>
+            </frc-number-field>
+            <frc-number-field source-key="/trajectory/endRotation" label="Trajectory End Rotation" has-controls step="10" theme="align-right">
+              <span slot="suffix">&deg;</span>
+            </frc-number-field>
           </div>
         </div>
       </div>
