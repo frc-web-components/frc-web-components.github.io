@@ -1,0 +1,153 @@
+
+<html>
+  <head>
+    <title>Field</title>
+    <link rel="stylesheet" type="text/css" href="./styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+    <script src="https://unpkg.com/@webcomponents/webcomponentsjs@next/webcomponents-loader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js"></script>
+
+    <style>
+      frc-boolean-box {
+        margin-bottom: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <a href="./index.html">Back to all examples</a>
+    <h2>Examples for Field</h2> -->
+    
+    <frc-dashboard>
+      <!-- code for "Try it out" section -->
+      <!-- <h3>Try it out!</h3> -->
+
+      <!-- styles -->
+      <style>
+        
+
+        /* frc-number-field {
+          margin-right: 10px;
+        } */
+
+        .container {
+          display: flex;
+          flex-direction: column;
+          height: 100vh;
+        }
+
+        frc-field {
+          max-width: 900px;
+          width: calc(100% - 300px);
+          --frc-grid-line-width: 2;
+        }
+
+        .field-and-table {
+          display: flex;
+        }
+
+        frc-networktable-tree {
+          height: 100%;
+          flex: 1;
+        }
+        
+        .forms {
+          overflow: scroll;
+          height: 100%;
+          flex: 1;
+          display: flex;
+          flex-direction: row;
+        }
+
+        .form-group {
+          display: flex;
+          flex-direction: column;
+          flex-wrap: wrap;
+          width: 150px;
+        }
+
+        .form-group > * {
+          max-width: 100%;
+          margin-right: 7px;
+        }
+
+        .form-group > *::part(input) {
+          padding-top: 5px;
+        }
+
+        
+      </style>
+
+      <!-- set initial NetworkTable values -->
+      <nt-number key="/pose/x" value="10"></nt-number>
+      <nt-number key="/pose/y" value="10"></nt-number>
+      <nt-number key="/pose/rotation" value="180"></nt-number>
+      <nt-number key="/turret/rotation" value="45"></nt-number>
+      <nt-boolean key="/turret/firing" value="true"></nt-boolean>
+
+
+      <nt-number-array
+        key="/trajectory/xs"
+        value="[1.18, 1.46, 1.71, 1.92, 2.03, 2.09, 2.15, 2.19, 2.22, 2.24, 2.26, 2.27]"
+      ></nt-number-array>
+
+      <nt-number-array
+        key="/trajectory/ys"
+        value="[0.5, 0.5, 0.52, 0.57, 0.62, 0.66, 0.71, 0.77, 0.83, 0.92, 1.05, 1.32]"
+      ></nt-number-array>
+
+      <nt-number key="/trajectory/startRotation" value="0"></nt-number>
+      <nt-number key="/trajectory/endRotation" value="-90"></nt-number>
+
+      <div class="container">
+        <div class="field-and-table">
+          <frc-field unit="ft" grid-size="1" width="52.4375" height="26.9375" image="./2020-field.png">
+            <frc-field-object source-key="/pose" width="2" height="3">
+              <frc-field-robot></frc-field-robot>
+              <frc-field-object source-key="/turret" width="1.3" height="1.4" image="./turret.png">
+                <frc-field-camera fov="60" angle="0" x="0" y=".5" range="5" sees-target></frc-field-camera>
+              </frc-field-object>
+            </frc-field-object>
+            <frc-field-trajectory source-key="/trajectory" unit="m"></frc-field-trajectory>
+          </frc-field>
+
+          <frc-networktable-tree></frc-networktable-tree>
+        </div>
+
+        <!-- Form Fields -->
+        <div class="forms">
+          <div class="form-group">
+            <frc-number-field source-key="/pose/x" label="Car X" has-controls min="0" max="26.9375" theme="align-right">
+              <span slot="suffix">ft</span>
+            </frc-number-field>
+
+            <frc-number-field source-key="/pose/y" label="Car Y" has-controls min="0" max="52.4375" theme="align-right">
+              <span slot="suffix">ft</span>
+            </frc-number-field>
+
+            <frc-number-field source-key="/pose/rotation" label="Car Rotation" has-controls step="10" theme="align-right">
+              <span slot="suffix">&deg;</span>
+            </frc-number-field>
+
+            <frc-number-field source-key="/pose/rotation" label="Car Rotation" has-controls step="10" theme="align-right">
+              <span slot="suffix">&deg;</span>
+            </frc-number-field>
+
+            <frc-number-field source-key="/pose/rotation" label="Car Rotation" has-controls step="10" theme="align-right">
+              <span slot="suffix">&deg;</span>
+            </frc-number-field>
+          </div>
+        </div>
+      </div>
+
+      <!-- <frc-number-field source-key="/turret/rotation" label="Turret Rotation" has-controls step="10" theme="align-right">
+        <span slot="suffix">&deg;</span>
+      </frc-number-field>
+
+      <frc-checkbox source-key="/turret/firing">Turret Firing</frc-checkbox> -->
+
+    </frc-dashboard>
+
+    <script src="../code-sample.js" type="module"></script>
+    <script src="../frc-web-components.js" type="module"></script>
+  </body>
+</html>
