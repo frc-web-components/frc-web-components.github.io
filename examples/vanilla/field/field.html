@@ -46,8 +46,9 @@
         }
 
         frc-networktable-tree {
-          height: 100%;
+          max-height: 400px;
           flex: 1;
+          max-width: 600px;
         }
         
         .forms {
@@ -55,34 +56,74 @@
           height: 100%;
           flex: 1;
           display: flex;
-          flex-direction: row;
+          flex-direction: column;
         }
 
         .form-group {
           display: flex;
-          flex-direction: column;
-          flex-wrap: wrap;
-          width: 150px;
+          flex-direction: row;
+          margin-right: 10px;
+          align-items: flex-end;
         }
 
         .form-group > * {
-          max-width: 100%;
+          max-width: 150px;
           margin-right: 7px;
         }
 
-        .form-group > *::part(input) {
+        .form-group > *::part(input), .form-group > *::part(combo-box) {
           padding-top: 5px;
+          max-width: 150px;
+        }
+
+        .group-input {
+          display: flex;
+          flex-direction: column;
+          margin-right: 10px;
+          width: auto;
+          max-width: 100%;
+        }
+
+        .group-input label {
+          display: block;
+          margin-bottom: 5px;
         }
 
         
       </style>
 
       <!-- set initial NetworkTable values -->
-      <nt-number key="/pose/x" value="10"></nt-number>
-      <nt-number key="/pose/y" value="10"></nt-number>
-      <nt-number key="/pose/rotation" value="180"></nt-number>
+      <nt-string key="/field/unit" value="ft"></nt-string>
+      <nt-number key="/field/gridSize" value="1"></nt-number>
+      <nt-number key="/field/width" value="52.4375"></nt-number>
+      <nt-number key="/field/height" value="26.9375"></nt-number>
+      <nt-string key="/field/image" value="2020-field.png"></nt-string>
+
+
+      <nt-number key="/robot/x" value="10"></nt-number>
+      <nt-number key="/robot/y" value="10"></nt-number>
+      <nt-number key="/robot/rotation" value="180"></nt-number>
+      <nt-number key="/robot/width" value="2"></nt-number>
+      <nt-number key="/robot/height" value="3"></nt-number>
+      <nt-string key="/robot/unit" value="ft"></nt-string>
+
+
       <nt-number key="/turret/rotation" value="45"></nt-number>
       <nt-boolean key="/turret/firing" value="true"></nt-boolean>
+      <nt-number key="/turret/x" value="0"></nt-number>
+      <nt-number key="/turret/y" value="0"></nt-number>
+      <nt-number key="/turret/width" value="1.3"></nt-number>
+      <nt-number key="/turret/height" value="1.4"></nt-number>
+      <nt-string key="/turret/image" value="turret.png"></nt-string>
+      <nt-string key="/turret/unit" value="ft"></nt-string>
+
+      <nt-number key="/camera/fov" value="60"></nt-number>
+      <nt-number key="/camera/angle" value="0"></nt-number>
+      <nt-number key="/camera/x" value="0"></nt-number>
+      <nt-number key="/camera/y" value=".5"></nt-number>
+      <nt-number key="/camera/range" value="5"></nt-number>
+      <nt-boolean key="/camera/seesTarget" value="false"></nt-boolean>
+      <nt-number key="/camera/targetDistance" value="3"></nt-number>
 
 
       <nt-number-array
@@ -95,19 +136,20 @@
         value="[0.5, 0.5, 0.52, 0.57, 0.62, 0.66, 0.71, 0.77, 0.83, 0.92, 1.05, 1.32]"
       ></nt-number-array>
 
+      <nt-string key="/trajectory/unit" value="m"></nt-string>
       <nt-number key="/trajectory/startRotation" value="0"></nt-number>
       <nt-number key="/trajectory/endRotation" value="-90"></nt-number>
 
       <div class="container">
         <div class="field-and-table">
-          <frc-field unit="ft" grid-size="1" width="52.4375" height="26.9375" image="./2020-field.png">
-            <frc-field-object source-key="/pose" width="2" height="3">
+          <frc-field source-key="/field">
+            <frc-field-object source-key="/robot">
               <frc-field-robot></frc-field-robot>
-              <frc-field-object source-key="/turret" width="1.3" height="1.4" image="./turret.png">
-                <frc-field-camera fov="60" angle="0" x="0" y=".5" range="5" sees-target></frc-field-camera>
+              <frc-field-object source-key="/turret">
+                <frc-field-camera source-key="/camera"></frc-field-camera>
               </frc-field-object>
             </frc-field-object>
-            <frc-field-trajectory source-key="/trajectory" unit="m"></frc-field-trajectory>
+            <frc-field-trajectory source-key="/trajectory"></frc-field-trajectory>
           </frc-field>
 
           <frc-networktable-tree></frc-networktable-tree>
@@ -115,35 +157,111 @@
 
         <!-- Form Fields -->
         <div class="forms">
+          
           <div class="form-group">
-            <frc-number-field source-key="/pose/x" label="Car X" has-controls min="0" max="26.9375" theme="align-right">
-              <span slot="suffix">ft</span>
+            <frc-number-field source-key="/field/width" label="Field Width" has-controls min="0" theme="align-right">
+              <span slot="suffix"><frc-label source-key="/field/unit"></frc-label></span>
+            </frc-number-field>
+            <frc-number-field source-key="/field/height" label="Field Height" has-controls min="0" theme="align-right">
+              <span slot="suffix"><frc-label source-key="/field/unit"></frc-label></span>
+            </frc-number-field>
+            <frc-number-field source-key="/field/gridSize" label="Field Grid Size" has-controls min="0" theme="align-right">
+            </frc-number-field>
+            <frc-combo-box source-key="/field/unit" options='["in", "ft", "yd", "mm", "cm", "m"]' name="Field Unit"></frc-combo-box>
+            <frc-combo-box source-key="/field/image" options='["2020-field.png"]' name="Field Image"></frc-combo-box>
+          </div>
+
+          <div class="form-group">
+            <frc-number-field source-key="/robot/x" label="Robot X" has-controls min="0" theme="align-right">
+              <span slot="suffix"><frc-label source-key="/robot/unit"></frc-label></span>
             </frc-number-field>
 
-            <frc-number-field source-key="/pose/y" label="Car Y" has-controls min="0" max="52.4375" theme="align-right">
-              <span slot="suffix">ft</span>
+            <frc-number-field source-key="/robot/y" label="Robot Y" has-controls min="0" theme="align-right">
+              <span slot="suffix"><frc-label source-key="/robot/unit"></frc-label></span>
             </frc-number-field>
 
-            <frc-number-field source-key="/pose/rotation" label="Car Rotation" has-controls step="10" theme="align-right">
+            <frc-number-field source-key="/robot/width" label="Robot Width" has-controls min="0" theme="align-right">
+              <span slot="suffix"><frc-label source-key="/robot/unit"></frc-label></span>
+            </frc-number-field>
+
+            <frc-number-field source-key="/robot/height" label="Robot Height" has-controls min="0" theme="align-right">
+              <span slot="suffix"><frc-label source-key="/robot/unit"></frc-label></span>
+            </frc-number-field>
+
+            <frc-number-field source-key="/robot/rotation" label="Robot Rotation" has-controls step="10" theme="align-right">
+              <span slot="suffix">&deg;</span>
+            </frc-number-field>
+            
+            <frc-combo-box source-key="/robot/unit" options='["in", "ft", "yd", "mm", "cm", "m"]' name="Robot Unit"></frc-combo-box>
+          </div>
+
+    
+      <nt-string key="/turret/image" value="turret.png"></nt-string>
+
+          <div class="form-group">
+            <frc-number-field source-key="/turret/rotation" label="Turret Rotation" has-controls step="10" theme="align-right">
               <span slot="suffix">&deg;</span>
             </frc-number-field>
 
-            <frc-number-field source-key="/pose/rotation" label="Car Rotation" has-controls step="10" theme="align-right">
+            <frc-number-field source-key="/turret/x" label="Turret X" has-controls theme="align-right">
+              <span slot="suffix"><frc-label source-key="/turret/unit"></frc-label></span>
+            </frc-number-field>
+
+            <frc-number-field source-key="/turret/y" label="Turret Y" has-controls theme="align-right">
+              <span slot="suffix"><frc-label source-key="/turret/unit"></frc-label></span>
+            </frc-number-field>
+
+            <frc-number-field source-key="/turret/width" label="Turret Width" has-controls min="0" theme="align-right">
+              <span slot="suffix"><frc-label source-key="/turret/unit"></frc-label></span>
+            </frc-number-field>
+
+            <frc-number-field source-key="/turret/height" label="Turret Height" has-controls min="0" theme="align-right">
+              <span slot="suffix"><frc-label source-key="/turret/unit"></frc-label></span>
+            </frc-number-field>
+
+            <frc-combo-box source-key="/turret/unit" options='["in", "ft", "yd", "mm", "cm", "m"]' name="Turret Unit"></frc-combo-box>
+
+            <frc-text-field source-key="/turret/image" label="Turret image"></frc-text-field>
+          </div>
+
+          <div class="form-group">
+            <frc-number-field source-key="/camera/fov" label="Camera FOV" has-controls min="0" max="360" step="5" theme="align-right">
+              <span slot="suffix">&deg;</span>
+            </frc-number-field>
+            <frc-number-field source-key="/camera/angle" label="Camera Angle" has-controls theme="align-right">
               <span slot="suffix">&deg;</span>
             </frc-number-field>
 
-            <frc-number-field source-key="/pose/rotation" label="Car Rotation" has-controls step="10" theme="align-right">
-              <span slot="suffix">&deg;</span>
+            <frc-number-field source-key="/camera/x" label="Camera X" has-controls theme="align-right">
+              <span slot="suffix"><frc-label source-key="/turret/unit"></frc-label></span>
             </frc-number-field>
+
+            <frc-number-field source-key="/camera/y" label="Camera Y" has-controls theme="align-right">
+              <span slot="suffix"><frc-label source-key="/turret/unit"></frc-label></span>
+            </frc-number-field>
+
+            <frc-checkbox-group label="Camera Sees Target">
+              <frc-checkbox source-key="/camera/seesTarget"></frc-checkbox>
+            </frc-checkbox-group>
+
+            <frc-number-field source-key="/camera/targetDistance" label="Camera Target Distance" has-controls theme="align-right">
+              <span slot="suffix"><frc-label source-key="/turret/unit"></frc-label></span>
+            </frc-number-field>
+          </div>
+
+          <div class="form-group">
+            <div class="group-input">
+              <label>Trajectory X Positions</label>
+              <frc-text-view source-key="/trajectory/xs"></frc-text-view>
+            </div>
+            <div class="group-input">
+              <label>Trajectory Y Positions</label>
+              <frc-text-view source-key="/trajectory/ys"></frc-text-view>
+            </div>
+            <frc-combo-box source-key="/trajectory/unit" options='["in", "ft", "yd", "mm", "cm", "m"]' name="Trajectory Unit"></frc-combo-box>
           </div>
         </div>
       </div>
-
-      <!-- <frc-number-field source-key="/turret/rotation" label="Turret Rotation" has-controls step="10" theme="align-right">
-        <span slot="suffix">&deg;</span>
-      </frc-number-field>
-
-      <frc-checkbox source-key="/turret/firing">Turret Firing</frc-checkbox> -->
 
     </frc-dashboard>
 
