@@ -1,0 +1,102 @@
+
+<html>
+  <head>
+    <title>Field</title>
+    <link rel="stylesheet" type="text/css" href="./styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+    <script src="https://unpkg.com/@webcomponents/webcomponentsjs@next/webcomponents-loader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js"></script>
+  </head>
+  <body>
+    <!-- <a href="./index.html">Back to all examples</a>
+    <h2>Examples for Field</h2> -->
+    
+    <frc-dashboard>
+      <!-- code for "Try it out" section -->
+      <!-- <h3>Try it out!</h3> -->
+
+      <!-- styles -->
+      <style>
+        
+        .container {
+          display: flex;
+
+        }
+
+        frc-cad-viewer {
+          margin-right: 60px;
+          margin-left: 30px;
+          margin-top: 30px;
+          width: 400px;
+          height: 400px;
+        }
+        
+
+        
+      </style>
+
+
+      <nt-number key="/cadViewer/x" value="0"></nt-number>
+      <nt-number key="/cadViewer/y" value="0"></nt-number>
+      <nt-number key="/cadViewer/z" value="0"></nt-number>
+
+
+      <div class="container">
+        <frc-cad-viewer 
+          source-key="/cadViewer"
+          src="./Dozer.glb"
+          x-offset="-90"
+          y-offset="90"
+          z-offset="0"
+        ></frc-cad-viewer>
+
+        <div class="fields">
+
+          <frc-number-field
+            source-key="/cadViewer/x"
+            label="X (Pitch)"
+            has-controls
+            min="-1000000"
+            step="10"
+            theme="align-right"
+          > 
+            <span slot="suffix">&deg;</span>
+          </frc-number-field>
+
+          <br/>
+
+          <frc-number-field
+            source-key="/cadViewer/y"
+            label="Y (Roll)"
+            has-controls
+            min="-1000000"
+            step="10"
+            theme="align-right"
+          > 
+            <span slot="suffix">&deg;</span>
+          </frc-number-field>
+
+          <br/>
+
+          <frc-number-field
+            source-key="/cadViewer/z"
+            label="Z (Yaw)"
+            has-controls
+            min="-1000000"
+            step="10"
+            theme="align-right"
+          >
+            <span slot="suffix">&deg;</span>
+          </frc-number-field>
+
+        </div>
+      </div>
+
+      
+
+    </frc-dashboard>
+
+    <script src="../code-sample.js" type="module"></script>
+    <script src="../frc-web-components.js" type="module"></script>
+  </body>
+</html>
