@@ -7,7 +7,7 @@ class FwcHomePage extends LitElement {
     return [css`
 
       :host {
-        display: block;
+        display: block !important;
       }
 
       main {

@@ -43,3 +43,7 @@ h3 {
 pre {
   margin: 30px 0;
 }
+
+fwc-home-page, fwc-component-page {
+  display: none;
+}

@@ -1,15 +1,15 @@
 import {LitElement, html, css} from 'https://unpkg.com/@polymer/lit-element@latest/lit-element.js?module';
-import './frc-web-components.js';
 import './code-sample.js';
 import './sidebar.js';
+import './frc-web-components.js';
 
 class FwcComponentPage extends LitElement {
   
   static get styles() {
     return [css`
-
+    
       :host {
-        display: block;
+        display: block !important;
       }
 
       main {
