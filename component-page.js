@@ -45,6 +45,12 @@ class FwcComponentPage extends LitElement {
         display: block;
         padding-bottom: 50px;
       }
+
+      h2 {
+        margin-bottom: 40px;
+        font-size: 45px;
+        font-weight: normal;
+      }
     `];
   }
 
@@ -67,7 +73,7 @@ class FwcComponentPage extends LitElement {
           <fwc-sidebar selected-component="${this.componentName}"></fwc-sidebar>
 
           <fwc-page-content>
-            <h2>Examples for ${this.componentName}</h2>
+            <h2>${this.componentName}</h2>
             <slot></slot>
           </fwc-page-content>
         </main>

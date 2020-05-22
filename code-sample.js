@@ -7,15 +7,27 @@ class CodeSample extends LitElement {
 
       :host {
         display: block;
+        margin-bottom: 40px;
+        box-sizing: border-box;
+      }
+
+      main {
+        border: 1px solid #e0e0e0;
       }
 
       pre {
-        margin: 30px 0;
+        margin: 30px 0 0;
         display: block;
       }
 
       h3 {
-        margin: 40px 0;
+        margin: 20px 0;
+        font-weight: normal;
+        font-size: 25px;
+      }
+
+      .preview {
+        padding: 40px 20px 10px;
       }
 
       code.html {
@@ -81,9 +93,13 @@ class CodeSample extends LitElement {
   render() {
     return html`
       <h3>${this.title}</h3>
-      <slot></slot>
-      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/default.min.css">
-      <pre><code class="html"></code></pre>
+      <main>
+        <div class="preview">
+          <slot></slot>
+        </div>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/default.min.css">
+        <pre><code class="html"></code></pre>
+      </main>
     `;
   }  
 }

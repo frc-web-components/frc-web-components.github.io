@@ -53,6 +53,23 @@ class FwcSidebar extends LitElement {
         'Line Chart'
       ]
     }, {
+      title: 'Robot Info',
+      components: [
+        '3-Axis Accelerometer',
+        'Accelerometer',
+        'Basic FMS Info',
+        'Basic Subsystem',
+        'Differential Drivebase',
+        'Encoder',
+        'Gyro',
+        'Mecanum Drivebase',
+        'Model Viewer',
+        'Networktable Tree',
+        'Power Distribution Panel',
+        'Relay',
+        'Voltage View',
+      ]
+    }, {
       title: 'General',
       components: [
         'Boolean Box',
@@ -74,23 +91,6 @@ class FwcSidebar extends LitElement {
         'Text View',
         'Toggle Button',
         'Toggle Switch'
-      ]
-    }, {
-      title: 'Robot Info',
-      components: [
-        '3-Axis Accelerometer',
-        'Accelerometer',
-        'Basic FMS Info',
-        'Basic Subsystem',
-        'Differential Drivebase',
-        'Encoder',
-        'Gyro',
-        'Mecanum Drivebase',
-        'Model Viewer',
-        'Networktable Tree',
-        'Power Distribution Panel',
-        'Relay',
-        'Voltage View',
       ]
     }];
   }
