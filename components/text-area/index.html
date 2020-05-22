@@ -9,7 +9,195 @@
   </head>
   <body>
     <fwc-component-page component-name="Text Area">
-      
+      <code-sample title="Basic text field attributes">
+        <frc-text-area label="Label"></frc-text-area>
+        <frc-text-area placeholder="Placeholder"></frc-text-area>
+        <frc-text-area value="Value"></frc-text-area>
+      </code-sample>
+
+      <code-sample title="Disabled and read-only attributes">
+        <frc-text-area label="Disabled" value="Value" disabled></frc-text-area>
+        <frc-text-area label="Read-only" value="Value" readonly></frc-text-area>
+      </code-sample>
+
+      <code-sample title="Autoselect attribute">
+        <frc-text-area autoselect label="Autoselect" value="Text selected on focus"></frc-text-area>
+      </code-sample>
+
+      <code-sample title="Display the clear button attribute">
+        <frc-text-area clear-button-visible value="Value"></frc-text-area>
+      </code-sample>
+
+      <code-sample title="Required input attribute">
+        <frc-text-area required label="Name" error-message="Please enter your name"></frc-text-area>
+      </code-sample>
+
+      <code-sample title="Minlength and maxlength attributes">
+        <frc-text-area minlength="10" label="Min 10 characters" error-message="Minimum 10 characters"></frc-text-area>
+        <frc-text-area maxlength="50" label="Max 50 characters"></frc-text-area>
+      </code-sample>
+
+      <code-sample title="theme attribute">
+        <p>Text align</p>
+        <frc-text-area value="left"></frc-text-area>
+        <frc-text-area value="center" theme="align-center"></frc-text-area>
+        <frc-text-area value="right" theme="align-right"></frc-text-area>
+
+        <p>Small size</p>
+        <frc-text-area theme="small" label="Label" placeholder="Text field"></frc-text-area>
+      </code-sample>
+
+      <code-sample title="Prefix and suffix">
+        <frc-text-area label="Price" value="100">
+          <div slot="prefix">$</div>
+        </frc-text-area>
+        
+        <frc-text-area label="Speed" value="100" theme="align-right">
+          <div slot="suffix">ft/s</div>
+        </frc-text-area>
+      </code-sample>
+
+      <code-sample title="With NetworkTables">
+        <nt-string key="/string1" value="hello"></nt-string>
+
+        <frc-text-area source-key="/string1"></frc-text-area>
+        <br/>
+
+        <nt-string key="/area/value" value="Value"></nt-string>
+        <nt-string key="/area/label" value="Label"></nt-string>
+        <nt-string key="/area/placeholder" value="Placeholder"></nt-string>
+        <nt-boolean key="/area/disabled" value="false"></nt-boolean>
+        <nt-boolean key="/area/readonly" value="false"></nt-boolean>
+        <nt-boolean key="/area/autoselect" value="true"></nt-boolean>
+        <nt-boolean key="/area/clearButtonVisible" value="true"></nt-boolean>
+        <nt-boolean key="/area/required" value="true"></nt-boolean>
+        <nt-number key="/area/minlength" value="2"></nt-number>
+        <nt-number key="/area/maxlength" value="10"></nt-number>
+        <nt-string key="/area/errorMessage" value="Some Error"></nt-string>
+        <nt-string key="/area/pattern" value=""></nt-string>
+        <nt-boolean key="/area/preventInvalidInput" value="false"></nt-boolean>
+        <nt-string key="/area/theme" value="align-center"></nt-string>
+
+        <frc-text-area source-key="/area"></frc-text-area>
+      </code-sample>
+
+      <code-sample title="With attributes and NetworkTables">
+        <nt-string key="/area2/value" value="Value"></nt-string>
+        <nt-string key="/area2/label" value="Label"></nt-string>
+
+        <frc-text-area source-key="/area2" readonly theme="align-right"></frc-text-area>
+      </code-sample>
+
+      <code-sample title="With styles">
+        <style>
+
+          .with-styles {
+            min-height: 200px;
+            max-height: 300px; 
+          }
+
+          .with-styles::part(value) {
+            font-weight: bold;
+            text-transform: uppercase;
+            color: red;
+          }
+
+          .with-styles::part(label) {
+            font-family: monospace;
+            font-size: 20px;
+          }
+
+          .with-styles::part(error-message) {
+            letter-spacing: 5px;
+          }
+
+          .with-styles::part(input-field) {
+            border: 1px solid #ccc;
+            background-color: #fff;
+          }
+
+          .with-styles[focused]::part(input-field) {
+            border: 5px solid green;
+            background-color: blue;
+          }
+        </style>
+
+        <frc-text-area class="with-styles" label="Label" required error-message="This is required."></frc-text-area>
+      </code-sample>
+
+      <!-- code for "Try it out" section -->
+      <h3>Try it out!</h3>
+
+      <nt-string key="/playground/value" value="Value"></nt-string>
+        <nt-string key="/playground/label" value="Try it out!"></nt-string>
+        <nt-string key="/playground/placeholder" value="Placeholder"></nt-string>
+        <nt-boolean key="/playground/disabled" value="false"></nt-boolean>
+        <nt-boolean key="/playground/readonly" value="false"></nt-boolean>
+        <nt-boolean key="/playground/autoselect" value="true"></nt-boolean>
+        <nt-boolean key="/playground/clearButtonVisible" value="true"></nt-boolean>
+        <nt-boolean key="/playground/required" value="true"></nt-boolean>
+        <nt-number key="/playground/minlength" value="2"></nt-number>
+        <nt-number key="/playground/maxlength" value="10"></nt-number>
+        <nt-string key="/playground/errorMessage" value="Some Error"></nt-string>
+        <nt-boolean key="/playground/preventInvalidInput" value="false"></nt-boolean>
+        <nt-string key="/playground/theme" value="align-center"></nt-string>
+
+      <frc-text-area source-key="/playground"></frc-text-area>
+
+      <div class="try-it-out">
+        <frc-text-field 
+          label="Value" 
+          theme="small" 
+          source-key="/playground/value"
+        ></frc-text-field>
+
+        <frc-text-field 
+          label="label" 
+          theme="small" 
+          source-key="/playground/label"
+        ></frc-text-field>
+
+        <frc-text-field 
+          label="Placeholder" 
+          theme="small" 
+          source-key="/playground/placeholder"
+        ></frc-text-field>
+
+        <frc-number-field 
+          label="Minimum length" 
+          theme="small" 
+          source-key="/playground/minlength"
+          has-controls
+        ></frc-number-field>
+
+        <frc-number-field 
+          label="Maximum length" 
+          theme="small" 
+          source-key="/playground/maxlength"
+          has-controls
+        ></frc-number-field>
+
+        <frc-text-field 
+          label="Error Message" 
+          theme="small" 
+          source-key="/playground/errorMessage"
+        ></frc-text-field>
+
+        <frc-text-field 
+          label="Theme" 
+          theme="small" 
+          source-key="/playground/theme"
+        ></frc-text-field>
+
+        <frc-checkbox-group theme="horizontal">
+          <frc-checkbox source-key="/playground/disabled" value="1">Disabled</frc-checkbox>
+          <frc-checkbox source-key="/playground/readonly" value="2">Read-only</frc-checkbox>
+          <frc-checkbox source-key="/playground/autoselect" value="3">Autoselect</frc-checkbox>
+          <frc-checkbox source-key="/playground/clearButtonVisible" value="4">Clear button visible</frc-checkbox>
+          <frc-checkbox source-key="/playground/required" value="5">Required</frc-checkbox>
+          <frc-checkbox source-key="/playground/preventInvalidInput" value="6">Prevent invalid input</frc-checkbox>
+        </frc-checkbox-group>
+      </div>
     </fwc-component-page>
     <script src="../../component-page.js" type="module"></script>
   </body>

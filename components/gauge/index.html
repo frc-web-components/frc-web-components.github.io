@@ -9,7 +9,66 @@
   </head>
   <body>
     <fwc-component-page component-name="Gauge">
-      
+      <code-sample title="With attributes">
+        <frc-gauge value="50" min="0" max="100"></frc-gauge>
+      </code-sample>
+
+      <code-sample title="With NetworkTables">
+        <nt-number key="/gauge/value" value="-20"></nt-number>
+        <nt-number key="/gauge/min" value="-30"></nt-number>
+        <nt-number key="/gauge/max" value="10"></nt-number>
+
+        <frc-gauge source-key="/gauge"></frc-gauge>
+      </code-sample>
+
+      <code-sample title="With attributes and NetworkTables">
+        <nt-number key="/number" value="80"></nt-number>
+
+        <frc-gauge source-key="/number" min="0" max="100"></frc-gauge>
+      </code-sample>
+
+      <code-sample title="With styles">
+        <style>
+          .with-styles {
+            width: 400px;
+            height: 400px;
+          }
+        </style>
+        <frc-gauge class="with-styles" value="20"></frc-gauge>
+      </code-sample>
+
+      <!-- code for "Try it out" section -->
+      <h3>Try it out!</h3>
+
+      <nt-number key="/playground/value" value="50"></nt-number>
+      <nt-number key="/playground/min" value="0"></nt-number>
+      <nt-number key="/playground/max" value="100"></nt-number>
+
+      <frc-gauge source-key="/playground"></frc-gauge>
+
+      <div class="try-it-out">
+
+        <frc-number-field 
+          label="Value" 
+          theme="small" 
+          source-key="/playground/value"
+          has-controls
+        ></frc-number-field>
+
+        <frc-number-field 
+          label="Min" 
+          theme="small" 
+          source-key="/playground/min"
+          has-controls
+        ></frc-number-field>
+
+        <frc-number-field 
+          label="Max" 
+          theme="small" 
+          source-key="/playground/max"
+          has-controls
+        ></frc-number-field>
+      </div>
     </fwc-component-page>
     <script src="../../component-page.js" type="module"></script>
   </body>

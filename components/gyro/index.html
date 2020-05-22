@@ -9,7 +9,70 @@
   </head>
   <body>
     <fwc-component-page component-name="Gyro">
-      
+      <code-sample title="With attributes">
+        <frc-gyro value="95"></frc-gyro>
+        <frc-gyro precision="5"></frc-gyro>
+        <frc-gyro value="270.3249" precision="3" hide-label></frc-gyro>
+      </code-sample>
+
+      <code-sample title="With NetworkTables">
+        <nt-number key="/num1" value="45"></nt-number>
+
+        <frc-gyro source-key="/num1"></frc-gyro>
+
+        <nt-number key="/gyro1/value" value="-470.0021"></nt-number>
+        <nt-boolean key="/gyro1/hideLabel" value="false"></nt-boolean>
+        <nt-number key="/gyro1/precision" value="0"></nt-number>
+
+        <frc-gyro source-key="/gyro1"></frc-gyro>
+      </code-sample>
+
+      <code-sample title="With attributes and NetworkTables">
+        <nt-number key="/gyro2/value" value="432.19"></nt-number>
+        <frc-gyro source-key="/gyro2" precision="1"></frc-gyro>
+      </code-sample>
+
+      <code-sample title="With styles">
+        <style>
+          .with-styles {
+            width: 500px;
+            height: 500px;
+          }
+        </style>
+        <frc-gyro class="with-styles" value="10"></frc-gyro>
+      </code-sample>
+
+      <!-- code for "Try it out" section -->
+      <h3>Try it out!</h3>
+
+      <nt-number key="/playground/value" value="180"></nt-number>
+      <nt-number key="/playground/precision" value="2"></nt-number>
+      <nt-boolean key="/playground/hideLabel" value="false"></nt-boolean>
+
+      <frc-gyro source-key="/playground"></frc-gyro>
+
+      <div class="try-it-out">
+
+        <frc-number-field 
+          label="Value" 
+          theme="small" 
+          source-key="/playground/value"
+          has-controls
+        ></frc-number-field>
+
+        <frc-number-field 
+          label="Precision" 
+          theme="small" 
+          source-key="/playground/precision"
+          has-controls
+          min="0"
+          max="100"
+        ></frc-number-field>
+
+        <frc-checkbox-group theme="horizontal">
+          <frc-checkbox source-key="/playground/hideLabel">Hide Label</frc-checkbox>
+        </frc-checkbox-group>
+      </div>
     </fwc-component-page>
     <script src="../../component-page.js" type="module"></script>
   </body>

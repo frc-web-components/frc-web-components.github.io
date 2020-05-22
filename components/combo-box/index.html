@@ -9,7 +9,151 @@
   </head>
   <body>
     <fwc-component-page component-name="Combo Box">
-      
+      <code-sample title="With basic attributes">
+        <frc-combo-box 
+          name="Combo Box"
+          selected="Option 2"
+          default="Option 1"
+          options='["Option 1", "Option 2", "Option 3", "Option 4"]'
+        ></frc-combo-box>
+
+        <frc-combo-box 
+          placeholder="Options"
+          options='["Option 1", "Option 2", "Option 3", "Option 4"]'
+        ></frc-combo-box>
+      </code-sample>
+
+      <code-sample title="With disabled and read-only attributes">
+        <frc-combo-box name="Disabled" disabled options='["Option 1", "Option 2"]' selected="Option 1"></frc-combo-box>
+        <frc-combo-box name="Read-only" readonly options='["Option 1", "Option 2"]' selected="Option 1"></frc-combo-box>
+      </code-sample>
+
+      <code-sample title="With clear button attribute">
+        <frc-combo-box name="Name" clear-button-visible options='["Option 1", "Option 2"]' selected="Option 1"></frc-combo-box>
+      </code-sample>
+
+      <code-sample title="With allow custom value attribute">
+        <nt-string key="/customValue/selected" value="Option 1"></nt-string>
+        <frc-combo-box source-key="/customValue" allow-custom-value name="Enter custom value" options='["Option 1", "Option 2"]' selected="Option 1"></frc-combo-box>
+        <p>Selected value: <frc-label source-key="/customValue/selected"></frc-label></p>
+      </code-sample>
+
+      <code-sample title="With required and error message attributes">
+        <frc-combo-box name="Name" required error-message="This is required." options='["Option 1", "Option 2"]'></frc-combo-box>
+      </code-sample>
+
+      <code-sample title="With theme attribute">
+        <frc-combo-box theme="align-left" options='["Left", "Center", "Right", "Small"]' selected="Left"></frc-combo-box>
+        <frc-combo-box theme="align-center" options='["Left", "Center", "Right", "Small"]' selected="Center"></frc-combo-box>
+        <frc-combo-box theme="align-right" options='["Left", "Center", "Right", "Small"]' selected="Right"></frc-combo-box>
+        <frc-combo-box theme="small" options='["Left", "Center", "Right", "Small"]' selected="Small"></frc-combo-box>
+      </code-sample>
+
+      <code-sample title="With NetworkTables">
+        <nt-string 
+          key="/SmartDashboard/Autonomous Mode/.name" 
+          value="Autonomous Mode"
+        ></nt-string>
+
+        <nt-string 
+          key="/SmartDashboard/Autonomous Mode/selected" 
+          value="Drive Backwards"
+        ></nt-string>
+
+        <nt-string 
+          key="/SmartDashboard/Autonomous Mode/default" 
+          value="None"
+        ></nt-string>
+
+        <nt-string-array
+          key="/SmartDashboard/Autonomous Mode/options" 
+          value='["Drive Backwards", "Drive Forward", "Feature Example", "None"]'
+        ></nt-string-array>
+
+        <nt-string key="/SmartDashboard/Autonomous Mode/placeholder" value="placeholder"></nt-string>
+        <nt-boolean key="/SmartDashboard/Autonomous Mode/disabled" value="false"></nt-boolean>
+        <nt-boolean key="/SmartDashboard/Autonomous Mode/readonly" value="false"></nt-boolean>
+        <nt-boolean key="/SmartDashboard/Autonomous Mode/clearButtonVisible" value="true"></nt-boolean>
+        <nt-string key="/SmartDashboard/Autonomous Mode/theme" value="align-center small"></nt-string>
+        <nt-boolean key="/SmartDashboard/Autonomous Mode/required" value="true"></nt-boolean>
+        <nt-string key="/SmartDashboard/Autonomous Mode/errorMessage" value="This is an error"></nt-string>
+        <nt-boolean key="/SmartDashboard/Autonomous Mode/allowCustomValue" value="true"></nt-boolean>
+
+        <frc-combo-box 
+          source-key="/SmartDashboard/Autonomous Mode"
+        ></frc-combo-box>
+      </code-sample>
+
+      <!-- code for "Try it out" section -->
+      <h3>Try it out!</h3>
+
+      <nt-string key="/playground/.name" value="Try it out"></nt-string>
+      <nt-string key="/playground/selected" value="A"></nt-string>
+      <nt-string key="/playground/default" value="B"></nt-string>
+      <nt-string key="/playground/placeholder" value="placeholder"></nt-string>
+      <nt-boolean key="/playground/disabled" value="false"></nt-boolean>
+      <nt-boolean key="/playground/readonly" value="false"></nt-boolean>
+      <nt-boolean key="/playground/clearButtonVisible" value="true"></nt-boolean>
+      <nt-string key="/playground/theme" value="align-center small"></nt-string>
+      <nt-boolean key="/playground/required" value="true"></nt-boolean>
+      <nt-string key="/playground/errorMessage" value="This is an error"></nt-string>
+      <nt-boolean key="/playground/allowCustomValue" value="true"></nt-boolean>
+      <nt-string-array 
+        key="/playground/options" 
+        value='["A", "B", "C", "D"]'
+      ></nt-string-array>
+
+      <frc-combo-box source-key="/playground"></frc-combo-box>
+
+      <div class="try-it-out">
+
+        <label>Options</label>
+        <frc-text-view source-key="/playground/options"></frc-text-view>
+
+        <frc-text-field 
+          label="Name" 
+          theme="small" 
+          source-key="/playground/name"
+        ></frc-text-field>
+
+        <frc-text-field 
+          label="Selected" 
+          theme="small" 
+          source-key="/playground/selected"
+        ></frc-text-field>
+
+        <frc-text-field 
+          label="Default" 
+          theme="small" 
+          source-key="/playground/default"
+        ></frc-text-field>
+
+        <frc-text-field 
+          label="Placeholder" 
+          theme="small" 
+          source-key="/playground/placeholder"
+        ></frc-text-field>
+
+        <frc-text-field 
+          label="Theme" 
+          theme="small" 
+          source-key="/playground/theme"
+        ></frc-text-field>
+
+        <frc-text-field 
+          label="Error Message" 
+          theme="small" 
+          source-key="/playground/errorMessage"
+        ></frc-text-field>
+
+        <frc-checkbox-group theme="horizontal">
+          <frc-checkbox source-key="/playground/disabled" value="1">Disabled</frc-checkbox>
+          <frc-checkbox source-key="/playground/readonly" value="2">Read-only</frc-checkbox>
+          <frc-checkbox source-key="/playground/clearButtonVisible" value="3">Clear button visible</frc-checkbox>
+          <frc-checkbox source-key="/playground/required" value="4">Required</frc-checkbox>
+          <frc-checkbox source-key="/playground/allowCustomValue" value="5">Allow custom value</frc-checkbox>
+        </frc-checkbox-group>
+      </div>
     </fwc-component-page>
     <script src="../../component-page.js" type="module"></script>
   </body>

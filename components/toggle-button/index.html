@@ -9,7 +9,61 @@
   </head>
   <body>
     <fwc-component-page component-name="Toggle Button">
-      
+      <style>
+        frc-toggle-button {
+          margin-right: 6px;
+        }
+      </style>
+
+      <code-sample title="With attributes">
+        <frc-toggle-button toggled></frc-toggle-button>
+        <frc-toggle-button>With text!</frc-toggle-button>
+      </code-sample>
+
+      <code-sample title="With NetworkTables">
+        <nt-boolean key="/bool1" value="false"></nt-boolean>
+        <nt-boolean key="/button1/toggled" value="true"></nt-boolean>
+
+        <frc-toggle-button source-key="/bool1">/bool1</frc-toggle-button>
+        <frc-toggle-button source-key="/button1">/button1</frc-toggle-button>
+      </code-sample>
+
+      <code-sample title="With styles">
+        <style>
+          .with-styles {
+            width: 200px;
+            height: 200px;
+          }
+
+          .with-styles::part(button) {
+            border-radius: 30px;
+            background: green;
+            color: white;
+            font-size: 25px;
+          }
+
+          .with-styles[toggled]::part(button) {
+            background: red;
+            color: black;
+          }
+        </style>
+
+        <frc-toggle-button class="with-styles">Styled Button</frc-toggle-button>
+        <frc-toggle-button class="with-styles" toggled>Styled Button</frc-toggle-button>
+      </code-sample>
+
+      <!-- code for "Try it out" section -->
+      <h3>Try it out!</h3>
+
+      <nt-boolean key="/playground/toggled" value="true"></nt-boolean>
+
+      <frc-toggle-button source-key="/playground">Try me</frc-toggle-button>
+
+      <div class="try-it-out">
+        <frc-checkbox-group theme="horizontal">
+          <frc-checkbox source-key="/playground/toggled" value="1">Toggled</frc-checkbox>
+        </frc-checkbox-group>
+      </div>
     </fwc-component-page>
     <script src="../../component-page.js" type="module"></script>
   </body>

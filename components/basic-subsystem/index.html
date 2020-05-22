@@ -9,7 +9,57 @@
   </head>
   <body>
     <fwc-component-page component-name="Basic Subsystem">
-      
+      <code-sample title="With attributes">
+        <frc-basic-subsystem
+          default="Go Forward"
+          command="Go Backwards"
+        ></frc-basic-subsystem>
+      </code-sample>
+
+      <code-sample title="With NetworkTables">
+        <nt-string key="/LiveWindow/Ungrouped/Drivetrain/.default" value="Go Left"></nt-string>
+        <nt-string key="/LiveWindow/Ungrouped/Drivetrain/.command" value="Go Right"></nt-string>
+        <frc-basic-subsystem source-key="/LiveWindow/Ungrouped/Drivetrain"></frc-basic-subsystem>
+      </code-sample>
+
+      <code-sample title="With styles">
+        <style>
+          .with-styles {
+            text-transform: uppercase;
+            color: white;
+            padding: 10px;
+            background: black;
+          }
+        </style>
+        <frc-basic-subsystem
+          class="with-styles"
+          default="Go Forward"
+          command="Go Backwards"
+        ></frc-basic-subsystem>
+      </code-sample>
+
+      <!-- code for "Try it out" section -->
+      <h3>Try it out!</h3>
+
+      <nt-string key="/playground/.default" value="Stop"></nt-string>
+      <nt-string key="/playground/.command" value="Go"></nt-string>
+
+      <frc-basic-subsystem source-key="/playground"></frc-basic-subsystem>
+
+
+      <div class="try-it-out">
+        <frc-text-field 
+          label="Default" 
+          theme="small" 
+          source-key="/playground/.default"
+        ></frc-text-field>
+
+        <frc-text-field 
+          label="Command" 
+          theme="small" 
+          source-key="/playground/.command"
+        ></frc-text-field>
+      </div>
     </fwc-component-page>
     <script src="../../component-page.js" type="module"></script>
   </body>

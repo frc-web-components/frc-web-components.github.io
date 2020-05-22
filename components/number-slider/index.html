@@ -9,7 +9,81 @@
   </head>
   <body>
     <fwc-component-page component-name="Number Slider">
-      
+      <code-sample title="With attributes">
+        <frc-number-slider value=".5"></frc-number-slider>
+
+        <frc-number-slider 
+          value="25"
+          min="0"
+          max="100"
+          block-increment="25"
+        ></frc-number-slider>
+      </code-sample>
+
+      <code-sample title="With NetworkTables">
+        <nt-number key="/slider1/value" value="0"></nt-number>
+        <nt-number key="/slider1/min" value="-5"></nt-number>
+        <nt-number key="/slider1/max" value="5"></nt-number>
+        <nt-number key="/slider1/blockIncrement" value="1"></nt-number>
+
+        <frc-number-slider source-key="/slider1"></frc-number-slider>
+
+        <nt-number key="/num1" value="-1"></nt-number>
+
+        <frc-number-slider source-key="/num1"></frc-number-slider>
+      </code-sample>
+
+      <code-sample title="With attributes and NetworkTables">
+        <nt-number key="/num2" value="3"></nt-number>
+
+        <frc-number-slider source-key="/num2" max="5"></frc-number-slider>
+
+        <nt-number key="/slider2/min" value="-20"></nt-number>
+        <nt-number key="/slider2/max" value="20"></nt-number>
+
+        <frc-number-slider 
+          source-key="/slider2"
+          value="6" 
+          block-increment="2"
+        ></frc-number-slider>
+      </code-sample>
+
+      <code-sample title="With styles">
+        <style>
+          .with-styles {
+            width: 100%;
+          }
+        </style>
+
+        <frc-number-slider 
+          class="with-styles"
+          value=".9"
+        ></frc-number-slider>
+      </code-sample>
+
+      <!-- code for "Try it out" section -->
+      <h3>Try it out!</h3>
+
+      <nt-number key="/playground/value" value="1"></nt-number>
+      <nt-number key="/playground/min" value="-10"></nt-number>
+      <nt-number key="/playground/max" value="10"></nt-number>
+      <nt-number key="/playground/blockIncrement" value=".1"></nt-number>
+
+      <frc-number-slider source-key="/playground"></frc-number-slider>
+
+      <div class="try-it-out">
+        <label>Value</label>
+        <frc-text-view source-key="/playground/value"></frc-text-view>
+
+        <label>Min</label>
+        <frc-text-view source-key="/playground/min"></frc-text-view>
+        
+        <label>Max</label>
+        <frc-text-view source-key="/playground/max"></frc-text-view>
+
+        <label>Block Increment</label>
+        <frc-text-view source-key="/playground/blockIncrement"></frc-text-view>
+      </div>
     </fwc-component-page>
     <script src="../../component-page.js" type="module"></script>
   </body>

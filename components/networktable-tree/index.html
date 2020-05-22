@@ -9,7 +9,47 @@
   </head>
   <body>
     <fwc-component-page component-name="Networktable Tree">
-      
+      <style>
+        frc-networktable-tree {
+          margin: 20px 0;
+        }
+      </style>
+
+      <code-sample title="With NetworkTables">
+        <nt-number key="/FMSInfo/MatchType" value="1"></nt-number>
+        <nt-number key="/FMSInfo/MatchNumber" value="2"></nt-number>
+        <nt-string key="/FMSInfo/EventName" value="Another Event"></nt-string> 
+        <nt-number key="/FMSInfo/FMSControlData" value="29"></nt-number>
+
+        <nt-string key="/Some Key" value="Some Value"></nt-string>
+        <nt-string key="/Some Key/String" value="String"></nt-string>
+        <nt-number key="/Some Key/Number" value="5"></nt-number>
+        <nt-boolean key="/Some Key/Boolean" value="true"></nt-boolean>
+        <nt-string-array key="/Some Key/String Array" value='["a", "b", "c"]'></nt-string-array>
+        <nt-number-array key="/Some Key/Number Array" value="[0,1,2,3]"></nt-number-array>
+        <nt-boolean-array key="/Some Key/Boolean Array" value="[true,true,false,false]"></nt-boolean-array>
+        
+        <nt-string key="/a/b/c/d/e/f" value="g"></nt-string>
+
+        <frc-networktable-tree></frc-networktable-tree>
+        <frc-networktable-tree source-key="/Some Key"></frc-networktable-tree>
+        <frc-networktable-tree source-key="/a/b/c"></frc-networktable-tree>
+
+      </code-sample>
+
+      <code-sample title="With styles">
+        <style>
+          .fixed-height {
+            height: 150px;
+          }
+
+          .wide {
+            width: 700px;
+          }
+        </style>
+        <frc-networktable-tree class="fixed-height"></frc-networktable-tree>
+        <frc-networktable-tree class="wide"></frc-networktable-tree>
+      </code-sample>
     </fwc-component-page>
     <script src="../../component-page.js" type="module"></script>
   </body>

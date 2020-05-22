@@ -9,7 +9,54 @@
   </head>
   <body>
     <fwc-component-page component-name="Text View">
+      <style>
+        frc-text-view {
+          margin-bottom: 15px;
+        }
+      </style>
       
+      <code-sample title="With attributes">
+        <frc-text-view value='"hello"'></frc-text-view>
+        <frc-text-view value='true'></frc-text-view>
+        <frc-text-view value='10'></frc-text-view>
+        <frc-text-view value='[1,2,3]'></frc-text-view>
+        <frc-text-view value='["a", "b", "c"]'></frc-text-view>
+        <frc-text-view value='[true, false, true]'></frc-text-view>
+      </code-sample>
+
+      <code-sample title="With NetworkTables">
+        <nt-string key="/value1" value="hello"></nt-string>
+        <nt-number key="/value2" value="5"></nt-number>
+        <nt-boolean key="/value3" value="false"></nt-boolean>
+        <nt-string-array key="/value4" value='["string", "array"]'></nt-string-array>
+        <nt-number-array key="/value5" value='[1,2,3]'></nt-number-array>
+        <nt-boolean-array key="/value6" value='[false,true]'></nt-boolean-array>
+        <nt-string key="/textView1/value" value="hello?"></nt-string>
+
+        <frc-text-view source-key="/value1"></frc-text-view>
+        <frc-text-view source-key="/value2"></frc-text-view>
+        <frc-text-view source-key="/value3"></frc-text-view>
+        <frc-text-view source-key="/value4"></frc-text-view>
+        <frc-text-view source-key="/value5"></frc-text-view>
+        <frc-text-view source-key="/value6"></frc-text-view>
+        <frc-text-view source-key="/textView1"></frc-text-view>
+      </code-sample>
+
+      <code-sample title="With styles">
+        <style>
+          .with-styles {
+            width: 100%;
+            font-size: 30px;
+            font-family: cursive;
+          }
+
+          .with-styles::part(input) {
+            text-align: center;
+          }
+        </style>
+
+        <frc-text-view class="with-styles" value='"hello everybody"'></frc-text-view>
+      </code-sample>
     </fwc-component-page>
     <script src="../../component-page.js" type="module"></script>
   </body>

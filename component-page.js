@@ -23,9 +23,10 @@ class FwcComponentPage extends LitElement {
       }
 
       fwc-page-content {
-        max-width: 800px;
-        padding-left: 50px;
+        width: 800px;
+        margin-left: 50px;
         display: block;
+        padding-bottom: 50px;
       }
     `];
   }

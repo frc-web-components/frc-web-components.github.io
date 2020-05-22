@@ -9,7 +9,148 @@
   </head>
   <body>
     <fwc-component-page component-name="Voltage View">
-      
+      <style>
+        frc-voltage-view {
+          margin-bottom: 10px;
+        }
+      </style>
+
+      <code-sample title="With attributes">
+        <frc-voltage-view value=".5"></frc-voltage-view>
+
+        <frc-voltage-view value=".9" min="0"></frc-voltage-view>
+
+        <frc-voltage-view 
+          value="2"
+          min="0"
+          max="10"
+          center="0"
+          precision="4"
+          num-tick-marks="3"
+          unit="V"
+        ></frc-voltage-view>
+
+        <frc-voltage-view 
+          value=".5"
+          hide-text
+          num-tick-marks="10"
+        ></frc-voltage-view>
+      </code-sample>
+
+      <code-sample title="With NetworkTables">
+        <nt-number key="/voltView1/value" value="7"></nt-number>
+        <nt-number key="/voltView1/min" value="0"></nt-number>
+        <nt-number key="/voltView1/max" value="10"></nt-number>
+        <nt-number key="/voltView1/precision" value="8"></nt-number>
+        <nt-number key="/voltView1/center" value="0"></nt-number>
+        <nt-boolean key="/voltView1/hideText" value="false"></nt-boolean>
+        <nt-number key="/voltView1/numTickMarks" value="7"></nt-number>
+        <nt-string key="/voltView1/unit" value="v"></nt-string>
+
+
+        <frc-voltage-view source-key="/voltView1"></frc-voltage-view>
+
+        <nt-number key="/num1" value=".8"></nt-number>
+
+        <frc-voltage-view source-key="/num1"></frc-voltage-view>
+      </code-sample>
+
+      <code-sample title="With attributes and NetworkTables">
+        <nt-number key="/num2" value="3"></nt-number>
+
+        <frc-voltage-view source-key="/num2" max="3.5" hide-text></frc-voltage-view>
+
+        <nt-number key="/voltView2/min" value="-20"></nt-number>
+        <nt-number key="/voltView2/max" value="20"></nt-number>
+
+        <frc-voltage-view 
+          source-key="/voltView2"
+          value="6" 
+          num-tick-marks="2"
+        ></frc-voltage-view>
+      </code-sample>
+
+      <code-sample title="With styles">
+        <style>
+          .with-styles {
+            width: 700px;
+          }
+        </style>
+
+        <frc-voltage-view 
+          class="with-styles"
+          value=".9"
+          num-tick-marks="11"
+        ></frc-voltage-view>
+      </code-sample>
+
+      <!-- code for "Try it out" section -->
+      <h3>Try it out!</h3>
+
+      <nt-number key="/playground/value" value="1"></nt-number>
+      <nt-number key="/playground/min" value="0"></nt-number>
+      <nt-number key="/playground/max" value="5"></nt-number>
+      <nt-number key="/playground/center" value="0"></nt-number>
+      <nt-number key="/playground/precision" value="0"></nt-number>
+      <nt-boolean key="/playground/hideText" value="false"></nt-boolean>
+      <nt-number key="/playground/numTickMarks" value="7"></nt-number>
+      <nt-string key="/playground/unit" value="V"></nt-string>
+
+      <frc-voltage-view source-key="/playground"></frc-voltage-view>
+
+      <div class="try-it-out">
+        <frc-number-field 
+          label="Value" 
+          theme="small" 
+          source-key="/playground/value"
+          has-controls
+        ></frc-number-field>
+
+        <frc-number-field 
+          label="Min" 
+          theme="small" 
+          source-key="/playground/min"
+          has-controls
+        ></frc-number-field>
+
+        <frc-number-field 
+          label="Max" 
+          theme="small" 
+          source-key="/playground/max"
+          has-controls
+        ></frc-number-field>
+
+        <frc-number-field 
+          label="Center" 
+          theme="small" 
+          source-key="/playground/center"
+          has-controls
+        ></frc-number-field>
+
+        <frc-number-field 
+          label="Precision" 
+          theme="small" 
+          source-key="/playground/precision"
+          has-controls
+        ></frc-number-field>
+
+        <frc-number-field 
+          label="Number of Ticks Marks" 
+          theme="small" 
+          source-key="/playground/numTickMarks"
+          has-controls
+        ></frc-number-field>
+
+        <frc-text-field 
+          label="Unit" 
+          theme="small" 
+          source-key="/playground/unit"
+        ></frc-text-field>
+
+        <frc-checkbox-group theme="horizontal">
+          <frc-checkbox source-key="/playground/hideText">Hide Text</frc-checkbox>
+        </frc-checkbox-group>
+      </div>
     </fwc-component-page>
     <script src="../../component-page.js" type="module"></script>
   </body>

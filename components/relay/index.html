@@ -9,7 +9,66 @@
   </head>
   <body>
     <fwc-component-page component-name="Relay">
-      
+      <style>
+        frc-relay {
+          margin: 10px;
+        }
+      </style>
+
+      <code-sample title="With attributes">
+        <frc-relay value="On"></frc-relay>
+      </code-sample>
+
+      <code-sample title="With NetworkTables">
+        <nt-string key="/LiveWindow/Ungrouped/Relay[0]/Value" value="Forward"></nt-string>
+
+        <frc-relay source-key="/LiveWindow/Ungrouped/Relay[0]"></frc-relay>
+
+        <nt-string key="/string1" value="On"></nt-string>
+
+        <frc-relay source-key="/string1"></frc-relay>
+      </code-sample>
+
+      <code-sample title="With styles">
+        <style>
+          .row {
+            width: 500px;
+            height: 100px;
+            flex-direction: row;
+          }
+
+          .grid {
+            width: 200px;
+            height: 200px;
+            flex-direction: row;
+            flex-wrap: wrap;
+          }
+
+          .grid::part(button) {
+            width: 100px;
+            height: 100px;
+            flex: none;
+          }
+        </style>
+
+        <frc-relay class="row"></frc-relay>
+        <frc-relay class="grid"></frc-relay>
+      </code-sample>
+
+      <!-- code for "Try it out" section -->
+      <h3>Try it out!</h3>
+
+      <nt-string key="/playground/value" value="Forward"></nt-string>
+    
+      <frc-relay source-key="/playground"></frc-relay>
+
+      <div class="try-it-out">
+        <frc-text-field 
+          label="Value" 
+          theme="small" 
+          source-key="/playground/value"
+        ></frc-text-field>
+      </div>
     </fwc-component-page>
     <script src="../../component-page.js" type="module"></script>
   </body>

@@ -9,7 +9,174 @@
   </head>
   <body>
     <fwc-component-page component-name="Checkbox Group">
+      <style>
+        frc-checkbox-group {
+          display: block;
+        }
+      </style>
+
+      <code-sample title="With basic attributes">
+        <frc-checkbox-group value='["1", "3"]'>
+          <frc-checkbox value="1">One</frc-checkbox>
+          <frc-checkbox value="2">Two</frc-checkbox>
+          <frc-checkbox value="3">Three</frc-checkbox>
+        </frc-checkbox-group>
+
+        <frc-checkbox-group label="Label">
+          <frc-checkbox value="1">One</frc-checkbox>
+          <frc-checkbox value="2" checked>Two</frc-checkbox>
+          <frc-checkbox value="3">Three</frc-checkbox>
+        </frc-checkbox-group>
+      </code-sample>
+
+      <code-sample title="With disabled attribute">
+        <frc-checkbox-group label="Disabled" disabled>
+          <frc-checkbox value="1" checked>One</frc-checkbox>
+          <frc-checkbox value="2">Two</frc-checkbox>
+          <frc-checkbox value="3">Three</frc-checkbox>
+        </frc-checkbox-group>
+
+        <frc-checkbox-group label="Single disabled checkbox">
+          <frc-checkbox value="1" checked>One</frc-checkbox>
+          <frc-checkbox disabled value="2">Two</frc-checkbox>
+          <frc-checkbox value="3">Three</frc-checkbox>
+        </frc-checkbox-group>
+      </code-sample>
+
+      <code-sample title="With theme attribute">
+        <frc-checkbox-group value='["1"]' label="Horizontal" theme="horizontal">
+          <frc-checkbox value="1">One</frc-checkbox>
+          <frc-checkbox value="2">Two</frc-checkbox>
+          <frc-checkbox value="3">Three</frc-checkbox>
+        </frc-checkbox-group>
+      </code-sample>
       
+      <code-sample title="With multi-line labels">
+        <frc-checkbox-group>
+          <frc-checkbox checked value="1">
+            <b>Option one</b>
+            <div>Description</div>
+          </frc-checkbox>
+        
+          <frc-checkbox value="2">
+            <b>Option two</b>
+            <div>Description</div>
+          </frc-checkbox>
+        
+          <frc-checkbox disabled value="3">
+            <b>Option three</b>
+            <div>Description</div>
+          </frc-checkbox>
+        </frc-checkbox-group>
+      </code-sample>
+
+      <code-sample title="Validation attributes">
+        <frc-checkbox-group label="Required" required error-message="Please choose one option">
+          <frc-checkbox value="1">One</frc-checkbox>
+          <frc-checkbox value="2">Two</frc-checkbox>
+          <frc-checkbox value="3">Three</frc-checkbox>
+        </frc-checkbox-group>
+      </code-sample>
+
+      <code-sample title="With NetworkTables">
+        <nt-string-array key="/stringArray" value='["1", "3"]'></nt-string-array>
+
+        <frc-checkbox-group source-key="/stringArray">
+          <frc-checkbox value="1">One</frc-checkbox>
+          <frc-checkbox value="2">Two</frc-checkbox>
+          <frc-checkbox value="3">Three</frc-checkbox>
+        </frc-checkbox-group>
+
+        <nt-string-array key="/group/value" value='["3"]'></nt-string-array>
+        <nt-string key="/group/label" value="Label"></nt-string>
+        <nt-string key="/group/theme" value="vertical"></nt-string>
+        <nt-boolean key="/group/disabled" value="false"></nt-boolean>
+        <nt-boolean key="/group/required" value="true"></nt-boolean>
+        <nt-string key="/group/errorMessage" value="It's Required!"></nt-string>
+
+        <frc-checkbox-group source-key="/group">
+          <frc-checkbox value="1">One</frc-checkbox>
+          <frc-checkbox value="2">Two</frc-checkbox>
+          <frc-checkbox value="3">Three</frc-checkbox>
+        </frc-checkbox-group>
+      </code-sample>
+
+      <code-sample title="With attributes and NetworkTables">
+        <nt-string-array key="/group2/value" value='["2"]'></nt-string-array>
+        <nt-string key="/group2/theme" value="horizontal"></nt-string>
+
+        <frc-checkbox-group source-key="/group2" disabled label="Label">
+          <frc-checkbox value="1">One</frc-checkbox>
+          <frc-checkbox value="2">Two</frc-checkbox>
+          <frc-checkbox value="3">Three</frc-checkbox>
+        </frc-checkbox-group>
+      </code-sample>
+
+      <code-sample title="With styles">
+
+        <style>
+          .with-styles::part(label) {
+            font-family: monospace;
+            font-size: 20px;
+          }
+
+          .with-styles::part(error-message) {
+            letter-spacing: 5px;
+            color: darkorange;
+          }
+        </style>
+
+        <frc-checkbox-group label="Label" required error-message="Required" value='[]' class="with-styles">
+          <frc-checkbox value="1">One</frc-checkbox>
+          <frc-checkbox value="2">Two</frc-checkbox>
+          <frc-checkbox value="3">Three</frc-checkbox>
+        </frc-checkbox-group>
+      </code-sample>
+
+      <!-- code for "Try it out" section -->
+      <h3>Try it out!</h3>
+
+      <nt-string-array key="/playground/value" value='["1", "3"]'></nt-string-array>
+      <nt-string key="/playground/label" value="Label"></nt-string>
+      <nt-string key="/playground/theme" value="vertical"></nt-string>
+      <nt-boolean key="/playground/disabled" value="false"></nt-boolean>
+      <nt-boolean key="/playground/required" value="true"></nt-boolean>
+      <nt-string key="/playground/errorMessage" value="This is required"></nt-string>
+
+      <frc-checkbox-group source-key="/playground">
+        <frc-checkbox value="1">One</frc-checkbox>
+        <frc-checkbox value="2">Two</frc-checkbox>
+        <frc-checkbox value="3">Three</frc-checkbox>
+      </frc-checkbox-group>
+
+      <div class="try-it-out">
+
+        <label>Value</label>
+        <frc-text-view source-key="/playground/value"></frc-text-view>
+
+        <frc-text-field 
+          label="Label" 
+          theme="small" 
+          source-key="/playground/label"
+        ></frc-text-field>
+
+        <frc-text-field 
+          label="Theme" 
+          theme="small" 
+          source-key="/playground/theme"
+        ></frc-text-field>
+
+        <frc-text-field 
+          label="Error Message" 
+          theme="small" 
+          source-key="/playground/errorMessage"
+        ></frc-text-field>
+        
+        <frc-checkbox-group theme="horizontal">
+          <frc-checkbox source-key="/playground/disabled" value="1">Disabled</frc-checkbox>
+          <frc-checkbox source-key="/playground/required" value="2">Required</frc-checkbox>
+        </frc-checkbox-group>
+      </div>
     </fwc-component-page>
     <script src="../../component-page.js" type="module"></script>
   </body>

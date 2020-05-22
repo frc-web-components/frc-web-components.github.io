@@ -9,7 +9,74 @@
   </head>
   <body>
     <fwc-component-page component-name="Basic FMS Info">
-      
+      <code-sample title="With attributes">
+        <frc-basic-fms-info
+          match-type="2"
+          match-number="5"
+          event-name="Some Event"
+          fms-control-data="33"
+        ></frc-basic-fms-info>
+      </code-sample>
+
+      <code-sample title="With NetworkTables">
+        <nt-number key="/FMSInfo/MatchType" value="1"></nt-number>
+        <nt-number key="/FMSInfo/MatchNumber" value="2"></nt-number>
+        <nt-string key="/FMSInfo/EventName" value="Another Event"></nt-string> 
+        <nt-number key="/FMSInfo/FMSControlData" value="29"></nt-number>
+        <frc-basic-fms-info source-key="/FMSInfo"></frc-basic-fms-info>
+      </code-sample>
+
+      <code-sample title="With styles">
+        <style>
+          .with-styles {
+            font-size: 20px;
+            font-family: cursive;
+            color: purple;
+          }
+        </style>
+        <frc-basic-fms-info class="with-styles"></frc-basic-fms-info>
+      </code-sample>
+
+      <!-- code for "Try it out" section -->
+      <h3>Try it out!</h3>
+
+      <nt-number key="/playground/MatchType" value="1"></nt-number>
+      <nt-number key="/playground/MatchNumber" value="2"></nt-number>
+      <nt-string key="/playground/EventName" value="Another Event"></nt-string> 
+      <nt-number key="/playground/FMSControlData" value="29"></nt-number>
+
+      <frc-basic-fms-info source-key="/playground"></frc-basic-fms-info>
+
+
+      <div class="try-it-out">
+
+        <frc-number-field 
+          label="Match Type" 
+          theme="small" 
+          source-key="/playground/MatchType"
+          has-controls
+        ></frc-number-field>
+
+        <frc-number-field 
+          label="Match Number" 
+          theme="small" 
+          source-key="/playground/MatchNumber"
+          has-controls
+        ></frc-number-field>
+
+        <frc-number-field 
+          label="FMS Control Data" 
+          theme="small" 
+          source-key="/playground/FMSControlData"
+          has-controls
+        ></frc-number-field>
+
+        <frc-text-field 
+          label="Event Name" 
+          theme="small" 
+          source-key="/playground/EventName"
+        ></frc-text-field>
+      </div>
     </fwc-component-page>
     <script src="../../component-page.js" type="module"></script>
   </body>

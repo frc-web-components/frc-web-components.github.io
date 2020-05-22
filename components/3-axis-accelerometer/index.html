@@ -9,7 +9,166 @@
   </head>
   <body>
     <fwc-component-page component-name="3-Axis Accelerometer">
-      
+      <style>
+        frc-3-axis-accelerometer {
+          margin-bottom: 20px;
+        }
+      </style>
+
+      <code-sample title="With attributes">
+        <frc-3-axis-accelerometer x="5" y="5" z="-8.2"></frc-3-axis-accelerometer>
+
+        <frc-3-axis-accelerometer x="2.9" y="0" z="" min="10"></frc-3-axis-accelerometer>
+
+        <frc-3-axis-accelerometer 
+          x="-2"
+          y="0"
+          z="4"
+          min="-4"
+          max="4"
+          center="0"
+          precision="4"
+          num-tick-marks="3"
+          unit="g"
+        ></frc-3-axis-accelerometer>
+
+        <frc-3-axis-accelerometer 
+          x="16"
+          y="-13"
+          z="3"
+          hide-text
+          num-tick-marks="10"
+        ></frc-3-axis-accelerometer>
+      </code-sample>
+
+      <code-sample title="With NetworkTables">
+        <nt-number key="/accel1/x" value="7"></nt-number>
+        <nt-number key="/accel1/y" value="-3"></nt-number>
+        <nt-number key="/accel1/z" value="4"></nt-number>
+        <nt-number key="/accel1/min" value="0"></nt-number>
+        <nt-number key="/accel1/max" value="8"></nt-number>
+        <nt-number key="/accel1/precision" value="8"></nt-number>
+        <nt-number key="/accel1/center" value="0"></nt-number>
+        <nt-boolean key="/accel1/hideText" value="false"></nt-boolean>
+        <nt-number key="/accel1/numTickMarks" value="7"></nt-number>
+        <nt-string key="/accel1/unit" value="G"></nt-string>
+
+        <frc-3-axis-accelerometer source-key="/accel1"></frc-3-axis-accelerometer>
+      </code-sample>
+
+      <code-sample title="With attributes and NetworkTables">
+        <nt-number key="/accel2/X" value="0"></nt-number>
+        <nt-number key="/accel2/Y" value="4"></nt-number>
+        <nt-number key="/accel2/z" value="-2"></nt-number>
+        <nt-number key="/accel2/max" value="8"></nt-number>
+
+        <frc-3-axis-accelerometer 
+          source-key="/accel2"
+          num-tick-marks="2"
+          min="-8"
+        ></frc-3-axis-accelerometer>
+      </code-sample>
+
+      <code-sample title="With styles">
+        <style>
+          .with-styles {
+            width: 700px;
+          }
+        </style>
+
+        <frc-3-axis-accelerometer 
+          class="with-styles"
+          x="5"
+          y="2"
+          z="-5"
+          num-tick-marks="11"
+        ></frc-3-axis-accelerometer>
+      </code-sample>
+
+      <!-- code for "Try it out" section -->
+      <h3>Try it out!</h3>
+
+      <nt-number key="/playground/x" value="1"></nt-number>
+      <nt-number key="/playground/y" value="-4"></nt-number>
+      <nt-number key="/playground/z" value="6"></nt-number>
+      <nt-number key="/playground/min" value="-8"></nt-number>
+      <nt-number key="/playground/max" value="8"></nt-number>
+      <nt-number key="/playground/center" value="0"></nt-number>
+      <nt-number key="/playground/precision" value="0"></nt-number>
+      <nt-boolean key="/playground/hideText" value="false"></nt-boolean>
+      <nt-number key="/playground/numTickMarks" value="7"></nt-number>
+      <nt-string key="/playground/unit" value="g"></nt-string>
+
+      <frc-3-axis-accelerometer source-key="/playground"></frc-3-axis-accelerometer>
+
+      <div class="try-it-out">
+
+        <frc-number-field 
+          label="X" 
+          theme="small" 
+          source-key="/playground/x"
+          has-controls
+        ></frc-number-field>
+
+        <frc-number-field 
+          label="Y" 
+          theme="small" 
+          source-key="/playground/y"
+          has-controls
+        ></frc-number-field>
+
+        <frc-number-field 
+          label="Z" 
+          theme="small" 
+          source-key="/playground/z"
+          has-controls
+        ></frc-number-field>
+
+        <frc-number-field 
+          label="Min" 
+          theme="small" 
+          source-key="/playground/min"
+          has-controls
+        ></frc-number-field>
+
+        <frc-number-field 
+          label="Max" 
+          theme="small" 
+          source-key="/playground/max"
+          has-controls
+        ></frc-number-field>
+
+        <frc-number-field 
+          label="Center" 
+          theme="small" 
+          source-key="/playground/center"
+          has-controls
+        ></frc-number-field>
+
+        <frc-number-field 
+          label="Precision" 
+          theme="small" 
+          source-key="/playground/precision"
+          has-controls
+        ></frc-number-field>
+
+        <frc-number-field 
+          label="Number of Ticks Marks" 
+          theme="small" 
+          source-key="/playground/numTickMarks"
+          has-controls
+        ></frc-number-field>
+
+        <frc-text-field 
+          label="Unit" 
+          theme="small" 
+          source-key="/playground/unit"
+        ></frc-text-field>
+
+        <frc-checkbox-group theme="horizontal">
+          <frc-checkbox source-key="/playground/hideText">Hide Text</frc-checkbox>
+        </frc-checkbox-group>
+      </div>
     </fwc-component-page>
     <script src="../../component-page.js" type="module"></script>
   </body>

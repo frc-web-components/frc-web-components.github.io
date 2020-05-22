@@ -9,7 +9,220 @@
   </head>
   <body>
     <fwc-component-page component-name="Text Field">
-      
+      <style>
+        frc-text-view {
+          margin-bottom: 15px;
+        }
+
+        .info {
+          font-size: 12px;
+        }
+      </style>
+
+      <code-sample title="Basic text field attributes">
+        <frc-text-field label="Label"></frc-text-field>
+        <frc-text-field placeholder="Placeholder"></frc-text-field>
+        <frc-text-field value="Value"></frc-text-field>
+      </code-sample>
+
+      <code-sample title="Disabled and read-only attributes">
+        <frc-text-field label="Disabled" value="Value" disabled></frc-text-field>
+        <frc-text-field label="Read-only" value="Value" readonly></frc-text-field>
+      </code-sample>
+
+      <code-sample title="Autoselect attribute">
+        <frc-text-field autoselect label="Autoselect" value="Text selected on focus"></frc-text-field>
+      </code-sample>
+
+      <code-sample title="Display the clear button attribute">
+        <frc-text-field clear-button-visible value="Value"></frc-text-field>
+      </code-sample>
+
+      <code-sample title="Required input attribute">
+        <frc-text-field required label="Name" error-message="Please enter your name"></frc-text-field>
+      </code-sample>
+
+      <code-sample title="Minlength and maxlength attributes">
+        <frc-text-field minlength="2" label="Min 2 characters" error-message="Minimum 2 characters"></frc-text-field>
+        <frc-text-field maxlength="4" label="Max 4 characters"></frc-text-field>
+      </code-sample>
+
+      <code-sample title="Pattern attribute">
+        <frc-text-field pattern="(FRC|frc)*\d{1,4}" label="Team number" error-message="Not a valid team number"></frc-text-field>
+        <p>Valid team number: A number with maximum 4 digits that 
+          optionally starts with FRC. For example: frc254</p>
+      </code-sample>
+
+      <code-sample title="Prevent invalid input attribute">
+        <frc-text-field prevent-invalid-input pattern="[a-zA-Z0-9_.]{0,20}" label="Team name"></frc-text-field>
+        <p>Valid team name: Alphanumeric characters, underscores and dots. For example:
+          name.family</p>
+      </code-sample>
+
+      <code-sample title="theme attribute">
+        <p>Text align</p>
+        <frc-text-field value="left"></frc-text-field>
+        <frc-text-field value="center" theme="align-center"></frc-text-field>
+        <frc-text-field value="right" theme="align-right"></frc-text-field>
+
+        <p>Small size</p>
+        <frc-text-field theme="small" label="Label" placeholder="Text field"></frc-text-field>
+      </code-sample>
+
+      <code-sample title="Prefix and suffix">
+        <frc-text-field label="Price" value="100">
+          <div slot="prefix">$</div>
+        </frc-text-field>
+        
+        <frc-text-field label="Speed" value="100" theme="align-right">
+          <div slot="suffix">ft/s</div>
+        </frc-text-field>
+      </code-sample>
+
+      <code-sample title="With NetworkTables">
+        <nt-string key="/string1" value="hello"></nt-string>
+
+        <frc-text-field source-key="/string1"></frc-text-field>
+        <br/>
+
+        <nt-string key="/field/value" value="Value"></nt-string>
+        <nt-string key="/field/label" value="Label"></nt-string>
+        <nt-string key="/field/placeholder" value="Placeholder"></nt-string>
+        <nt-boolean key="/field/disabled" value="false"></nt-boolean>
+        <nt-boolean key="/field/readonly" value="false"></nt-boolean>
+        <nt-boolean key="/field/autoselect" value="true"></nt-boolean>
+        <nt-boolean key="/field/clearButtonVisible" value="true"></nt-boolean>
+        <nt-boolean key="/field/required" value="true"></nt-boolean>
+        <nt-number key="/field/minlength" value="2"></nt-number>
+        <nt-number key="/field/maxlength" value="10"></nt-number>
+        <nt-string key="/field/errorMessage" value="Some Error"></nt-string>
+        <nt-string key="/field/pattern" value=""></nt-string>
+        <nt-boolean key="/field/preventInvalidInput" value="false"></nt-boolean>
+        <nt-string key="/field/theme" value="align-center"></nt-string>
+
+        <frc-text-field source-key="/field"></frc-text-field>
+      </code-sample>
+
+      <code-sample title="With attributes and NetworkTables">
+        <nt-string key="/field2/value" value="Value"></nt-string>
+        <nt-string key="/field2/label" value="Label"></nt-string>
+
+        <frc-text-field source-key="/field2" readonly theme="align-right"></frc-text-field>
+      </code-sample>
+
+      <code-sample title="With styles">
+        <style>
+
+          .with-styles::part(value) {
+            font-weight: bold;
+            text-transform: uppercase;
+            color: red;
+          }
+
+          .with-styles::part(label) {
+            font-family: monospace;
+            font-size: 20px;
+          }
+
+          .with-styles::part(error-message) {
+            letter-spacing: 5px;
+          }
+
+          .with-styles::part(input-field) {
+            border: 1px solid #ccc;
+            background-color: #fff;
+            height: 60px;
+          }
+
+          .with-styles[focused]::part(input-field) {
+            border: 5px solid green;
+            background-color: blue;
+          }
+        </style>
+
+        <frc-text-field class="with-styles" label="Label" required error-message="This is required."></frc-text-field>
+      </code-sample>
+
+      <!-- code for "Try it out" section -->
+      <h3>Try it out!</h3>
+
+      <nt-string key="/playground/value" value="Value"></nt-string>
+        <nt-string key="/playground/label" value="Try it out!"></nt-string>
+        <nt-string key="/playground/placeholder" value="Placeholder"></nt-string>
+        <nt-boolean key="/playground/disabled" value="false"></nt-boolean>
+        <nt-boolean key="/playground/readonly" value="false"></nt-boolean>
+        <nt-boolean key="/playground/autoselect" value="true"></nt-boolean>
+        <nt-boolean key="/playground/clearButtonVisible" value="true"></nt-boolean>
+        <nt-boolean key="/playground/required" value="true"></nt-boolean>
+        <nt-number key="/playground/minlength" value="2"></nt-number>
+        <nt-number key="/playground/maxlength" value="10"></nt-number>
+        <nt-string key="/playground/errorMessage" value="Some Error"></nt-string>
+        <nt-string key="/playground/pattern" value=""></nt-string>
+        <nt-boolean key="/playground/preventInvalidInput" value="false"></nt-boolean>
+        <nt-string key="/playground/theme" value="align-center"></nt-string>
+
+      <frc-text-field source-key="/playground"></frc-text-field>
+
+      <div class="try-it-out">
+        <frc-text-field 
+          label="Value" 
+          theme="small" 
+          source-key="/playground/value"
+        ></frc-text-field>
+
+        <frc-text-field 
+          label="label" 
+          theme="small" 
+          source-key="/playground/label"
+        ></frc-text-field>
+
+        <frc-text-field 
+          label="Placeholder" 
+          theme="small" 
+          source-key="/playground/placeholder"
+        ></frc-text-field>
+
+        <frc-number-field 
+          label="Minimum length" 
+          theme="small" 
+          source-key="/playground/minlength"
+          has-controls
+        ></frc-number-field>
+
+        <frc-number-field 
+          label="Maximum length" 
+          theme="small" 
+          source-key="/playground/maxlength"
+          has-controls
+        ></frc-number-field>
+
+        <frc-text-field 
+          label="Error Message" 
+          theme="small" 
+          source-key="/playground/errorMessage"
+        ></frc-text-field>
+
+        <frc-text-field 
+          label="Pattern" 
+          theme="small" 
+          source-key="/playground/pattern"
+        ></frc-text-field>
+
+        <frc-text-field 
+          label="Theme" 
+          theme="small" 
+          source-key="/playground/theme"
+        ></frc-text-field>
+
+        <frc-checkbox-group theme="horizontal">
+          <frc-checkbox source-key="/playground/disabled" value="1">Disabled</frc-checkbox>
+          <frc-checkbox source-key="/playground/readonly" value="2">Read-only</frc-checkbox>
+          <frc-checkbox source-key="/playground/autoselect" value="3">Autoselect</frc-checkbox>
+          <frc-checkbox source-key="/playground/clearButtonVisible" value="4">Clear button visible</frc-checkbox>
+          <frc-checkbox source-key="/playground/required" value="5">Required</frc-checkbox>
+          <frc-checkbox source-key="/playground/preventInvalidInput" value="6">Prevent invalid input</frc-checkbox>
+        </frc-checkbox-group>
+      </div>
     </fwc-component-page>
     <script src="../../component-page.js" type="module"></script>
   </body>

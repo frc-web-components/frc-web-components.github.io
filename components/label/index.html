@@ -9,7 +9,48 @@
   </head>
   <body>
     <fwc-component-page component-name="Label">
-      
+      <code-sample title="With attributes">
+        <frc-label text="This is a label."></frc-label>
+        <em>
+          <frc-label text="It will take on the styles of its parent."></frc-label>
+        </em>
+        <a href="#">
+          You can use it to display
+          <frc-label text="variable"></frc-label>
+          text in your HTML.
+        </a>
+      </code-sample>
+
+      <code-sample title="With NetworkTables">
+        <nt-string key="/label1/text" value="/label1"></nt-string>
+        <nt-string key="/string1" value="/string1"></nt-string>
+
+        <p><frc-label source-key="/label1"></frc-label></p>
+        <p><frc-label source-key="/string1"></frc-label></p>
+
+        <nt-boolean key="/bool1" value="false"></nt-boolean>
+        <nt-number key="/num1" value="10"></nt-number>
+
+        <p><frc-label source-key="/bool1"></frc-label></p>
+        <p><frc-label source-key="/num1"></frc-label></p>
+      </code-sample>
+
+      <!-- code for "Try it out" section -->
+      <h3>Try it out!</h3>
+
+      <nt-string key="/playground/text" value="Clint"></nt-string>
+      <p>
+        My name is 
+        <strong><frc-label source-key="/playground"></frc-label></strong>.
+      </p>
+
+      <div class="try-it-out">
+        <frc-text-field 
+          label="Text" 
+          theme="small" 
+          source-key="/playground/text"
+        ></frc-text-field>
+      </div>
     </fwc-component-page>
     <script src="../../component-page.js" type="module"></script>
   </body>

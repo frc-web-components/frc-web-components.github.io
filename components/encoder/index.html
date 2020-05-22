@@ -9,7 +9,77 @@
   </head>
   <body>
     <fwc-component-page component-name="Encoder">
-      
+      <code-sample title="With attributes">
+        <frc-encoder
+          distance="10"
+          speed="2"
+        ></frc-encoder>
+      </code-sample>
+
+      <code-sample title="With NetworkTables">
+        <nt-number key="/LiveWindow/Ungrouped/Encoder/Distance" value="-20"></nt-number>
+        <nt-number key="/LiveWindow/Ungrouped/Encoder/Speed" value="5"></nt-number>
+        <frc-encoder source-key="/LiveWindow/Ungrouped/Encoder"></frc-encoder>
+      </code-sample>
+
+      <code-sample title="With styles">
+        <style>
+          .with-styles {
+            text-transform: uppercase;
+            color: green;
+            width: 600px;
+            height: 150px;
+          }
+
+          .with-styles::part(distance-label) {
+            letter-spacing: 10px;
+          }
+
+          .with-styles::part(speed-label) {
+            font-style: italic;
+            font-family: cursive;
+          }
+
+          .with-styles::part(distance-input) {
+            border: 5px solid green;
+          }
+
+          .with-styles::part(speed-input) {
+            font-size: 50px;
+          }
+        </style>
+        <frc-encoder
+          class="with-styles"
+          distance="20.2342"
+          speed="0"
+        ></frc-encoder>
+      </code-sample>
+
+      <!-- code for "Try it out" section -->
+      <h3>Try it out!</h3>
+
+      <nt-number key="/playground/distance" value="2"></nt-number>
+      <nt-number key="/playground/speed" value="3"></nt-number>
+
+      <frc-encoder source-key="/playground"></frc-encoder>
+
+
+      <div class="try-it-out">
+
+        <frc-number-field 
+          label="Distance" 
+          theme="small" 
+          source-key="/playground/distance"
+          has-controls
+        ></frc-number-field>
+
+        <frc-number-field 
+          label="Speed" 
+          theme="small" 
+          source-key="/playground/speed"
+          has-controls
+        ></frc-number-field>
+      </div>
     </fwc-component-page>
     <script src="../../component-page.js" type="module"></script>
   </body>
