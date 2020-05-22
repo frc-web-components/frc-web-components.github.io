@@ -1,0 +1,217 @@
+
+<html>
+  <head>
+    <title>Model Viewer</title>
+    <link rel="stylesheet" type="text/css" href="../../styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+    <script src="https://unpkg.com/@webcomponents/webcomponentsjs@next/webcomponents-loader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js"></script>
+  </head>
+  <body>
+    <fwc-component-page component-name="Model Viewer">
+      <frc-model-viewer
+        src="./Dozer.glb"
+        roll="0"
+        pitch="0"
+        yaw="0"
+        roll-offset="90"
+        pitch-offset="0"
+        yaw-offset="-90"
+      ></frc-model-viewer>
+
+      <script>
+        const modelViewer = document.querySelector('frc-model-viewer');
+        let pitch = 0; let roll = 0; let yaw = 180;
+        setInterval(() => {
+          pitch += 1; roll += 5; yaw += 5;
+          modelViewer.pitch = pitch;
+          modelViewer.roll = roll;
+          modelViewer.yaw = yaw;
+        }, 50);
+      </script>
+
+      <code-sample title="Basic Usage">
+        <frc-model-viewer src="./Dozer.glb"></frc-model-viewer>
+      </code-sample>
+
+      <code-sample title="Add rotation offset">
+        <frc-model-viewer 
+          src="./Dozer.glb"
+          roll-offset="90"
+          pitch-offset="0"
+          yaw-offset="-90"
+        ></frc-model-viewer>
+      </code-sample>
+
+      <code-sample title="Add rotation">
+        <frc-model-viewer 
+          src="./Dozer.glb"
+          roll="45"
+          pitch="45"
+          yaw="90"
+          roll-offset="90"
+          yaw-offset="-90"
+        ></frc-model-viewer>
+      </code-sample>
+
+      <code-sample title="Configure rotation axes">
+        <frc-model-viewer 
+          src="./Dozer.glb"
+          pitch="20"
+          roll="60"
+          pitch-axis="x"
+          roll-axis="z"
+          yaw-axis="y"
+          yaw-offset="-90"
+        ></frc-model-viewer>
+      </code-sample>
+
+
+
+      <code-sample title="With NetworkTables">
+        <nt-string key="/modelViewer/src" value="./Dozer.glb"></nt-string>
+        <nt-number key="/modelViewer/roll" value="30"></nt-number>
+        <nt-number key="/modelViewer/pitch" value="30"></nt-number>
+        <nt-number key="/modelViewer/yaw" value="-120"></nt-number>
+        <nt-number key="/modelViewer/rollOffset" value="90"></nt-number>
+        <nt-number key="/modelViewer/pitchOffset" value="0"></nt-number>
+        <nt-number key="/modelViewer/yawOffset" value="-90"></nt-number>
+        <nt-string key="/modelViewer/rollAxis" value="y"></nt-string>
+        <nt-string key="/modelViewer/pitchAxis" value="x"></nt-string>
+        <nt-string key="/modelViewer/yawAxis" value="z"></nt-string>
+
+        <frc-model-viewer source-key="/modelViewer"></frc-model-viewer>
+      </code-sample>
+
+      <code-sample title="With styles">
+        <style>
+          .with-styles {
+            width: 600px;
+            height: 600px;
+            background: green;
+            padding: 20px;
+          }
+        </style>
+        <frc-model-viewer class="with-styles" src="./Dozer.glb"></frc-model-viewer>
+      </code-sample>
+
+      <!-- code for "Try it out" section -->
+      <h3>Try it out!</h3>
+
+
+      <nt-string key="/playground/src" value="./Dozer.glb"></nt-string>
+      <nt-number key="/playground/roll" value="0"></nt-number>
+      <nt-number key="/playground/pitch" value="0"></nt-number>
+      <nt-number key="/playground/yaw" value="0"></nt-number>
+      <nt-number key="/playground/rollOffset" value="0"></nt-number>
+      <nt-number key="/playground/pitchOffset" value="0"></nt-number>
+      <nt-number key="/playground/yawOffset" value="-90"></nt-number>
+      <nt-string key="/playground/rollAxis" value="z"></nt-string>
+      <nt-string key="/playground/pitchAxis" value="x"></nt-string>
+      <nt-string key="/playground/yawAxis" value="y"></nt-string>
+
+      <frc-model-viewer source-key="/playground"></frc-model-viewer>
+
+
+      <div class="try-it-out">
+
+       <frc-text-field 
+          label="Source Path" 
+          theme="small" 
+          source-key="/playground/src"
+        ></frc-text-field>
+
+        <frc-number-field
+          source-key="/playground/roll"
+          label="Roll"
+          has-controls
+          min="-1000000"
+          step="10"
+          theme="small align-right"
+        > 
+          <span slot="suffix">&deg;</span>
+        </frc-number-field>
+
+        <frc-number-field
+          source-key="/playground/pitch"
+          label="Pitch"
+          has-controls
+          min="-1000000"
+          step="10"
+          theme="small align-right"
+        > 
+          <span slot="suffix">&deg;</span>
+        </frc-number-field>
+
+        <frc-number-field
+          source-key="/playground/yaw"
+          label="Yaw"
+          has-controls
+          min="-1000000"
+          step="10"
+          theme="small align-right"
+        > 
+          <span slot="suffix">&deg;</span>
+        </frc-number-field>
+
+        <frc-number-field
+          source-key="/playground/rollOffset"
+          label="Roll Offset"
+          has-controls
+          min="-1000000"
+          step="10"
+          theme="small align-right"
+        > 
+          <span slot="suffix">&deg;</span>
+        </frc-number-field>
+
+        <frc-number-field
+          source-key="/playground/pitchOffset"
+          label="Pitch Offset"
+          has-controls
+          min="-1000000"
+          step="10"
+          theme="small align-right"
+        > 
+          <span slot="suffix">&deg;</span>
+        </frc-number-field>
+
+        <frc-number-field
+          source-key="/playground/yawOffset"
+          label="Yaw Offset"
+          has-controls
+          min="-1000000"
+          step="10"
+          theme="small align-right"
+        > 
+          <span slot="suffix">&deg;</span>
+        </frc-number-field>
+
+         <frc-text-field 
+          label="Roll Axis" 
+          theme="small" 
+          source-key="/playground/rollAxis"
+          pattern="(x|y|z)"
+          error-message="Must be a valid axis"
+        ></frc-text-field>
+
+        <frc-text-field 
+          label="Pitch Axis" 
+          theme="small" 
+          source-key="/playground/pitchAxis"
+          pattern="(x|y|z)"
+          error-message="Must be a valid axis"
+        ></frc-text-field>
+
+        <frc-text-field 
+          label="Yaw Axis" 
+          theme="small" 
+          source-key="/playground/yawAxis"
+          pattern="(x|y|z)"
+          error-message="Must be a valid axis"
+        ></frc-text-field>
+      </div>
+    </fwc-component-page>
+    <script src="../../component-page.js" type="module"></script>
+  </body>
+</html>
