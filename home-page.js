@@ -1,5 +1,7 @@
 import {LitElement, html, css} from 'https://unpkg.com/@polymer/lit-element@latest/lit-element.js?module';
+import './top-nav.js';
 import './sidebar.js';
+import './frc-web-components.js';
 
 class FwcHomePage extends LitElement {
   
@@ -9,24 +11,7 @@ class FwcHomePage extends LitElement {
       :host {
         display: block !important;
       }
-
-      nav {
-        width: 100vw;
-        height: 60px;
-        background: black;
-        display: flex;
-        align-items: center;
-        padding-left: 15px;
-        color: white;
-        font-size: 25px;
-      }
-
-      nav span {
-        font-weight: bold;
-        letter-spacing: 1px;
-        font-size: 35px;
-      }
-
+      
       main {
         display: flex;
         align-items: stretch;
@@ -54,12 +39,7 @@ class FwcHomePage extends LitElement {
   render() {
     return html`
       <frc-dashboard>
-        <nav>
-          <span style="color: red">F</span>
-          <span style="color: white">R</span>
-          <span style="color: blue">C</span> 
-          &nbsp;&nbsp;Web Components
-        </nav>
+        <fwc-top-nav></fwc-top-nav>
         <main>
           <fwc-sidebar></fwc-sidebar>
 
