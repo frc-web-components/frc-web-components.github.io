@@ -20,10 +20,19 @@ class CodeSample extends LitElement {
         display: block;
       }
 
-      h3 {
+      header {
         margin: 20px 0;
+      }
+
+      h3 {
         font-weight: normal;
         font-size: 25px;
+        margin-bottom: 0px;
+      }
+
+      h4 {
+        font-weight: normal;
+        font-size: 17px;
       }
 
       .preview {
@@ -42,7 +51,8 @@ class CodeSample extends LitElement {
 
   static get properties() {
     return {
-      title: { type: String }
+      title: { type: String },
+      description: { type: String }
     }
   }
 
@@ -92,7 +102,10 @@ class CodeSample extends LitElement {
 
   render() {
     return html`
-      <h3>${this.title}</h3>
+      <header>
+        <h3>${this.title}</h3>
+        <h4>${this.description}</h4>
+      </header>
       <main>
         <div class="preview">
           <slot></slot>

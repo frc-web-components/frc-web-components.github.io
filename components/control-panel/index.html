@@ -1,0 +1,147 @@
+
+<html>
+  <head>
+    <title>Control Panel</title>
+    <link rel="stylesheet" type="text/css" href="../../styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+    <script src="https://unpkg.com/@webcomponents/webcomponentsjs@next/webcomponents-loader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js"></script>
+  </head>
+  <body>
+    <fwc-component-page component-name="Control Panel">
+
+      <code-sample title="Basic usage">
+        <frc-control-panel current-color="blue"></frc-control-panel>
+        
+        <frc-control-panel class="spin"></frc-control-panel>
+        <script>
+          (function() {
+            let currentColorIndex = 0;
+            const colors = ['red','yellow','blue','green'];
+            const controlPanel = document.querySelector('.spin');
+            setInterval(() => {
+              currentColorIndex++;
+              controlPanel.currentColor = colors[currentColorIndex % 4];
+            }, 200);
+          })();
+        </script>
+      </code-sample>
+
+      <code-sample title="Spin clockwise">        
+        <frc-control-panel class="spin" clockwise></frc-control-panel>
+        <script>
+          (function() {
+            let currentColorIndex = 0;
+            const colors = ['green', 'blue', 'yellow', 'red'];
+            const controlPanel = document.querySelector('.spin[clockwise]');
+            setInterval(() => {
+              currentColorIndex++;
+              controlPanel.currentColor = colors[currentColorIndex % 4];
+            }, 200);
+            })();
+        </script>
+      </code-sample>
+
+      <code-sample 
+        title="Picking desired color"
+        description="Clicking on a color sets the desired color. You can use this to communicate
+          to the robot what color you want to move the control panel to."
+        >
+        <nt-string key="/panel/desiredColor" value=""></nt-string>
+        <frc-control-panel source-key="/panel"></frc-control-panel>
+        <p>
+          Desired color is: 
+          <strong><frc-label source-key="/panel/desiredColor"></frc-label></strong>
+        </p>
+      </code-sample>
+
+       <code-sample 
+        title="Setting animation duration"
+        description="By default it takes 1 second to complete the spin animation.
+          You can change this duration to match the speed your robot turns the 
+          control panel."
+      >
+        <frc-control-panel current-color="blue" duration="5"></frc-control-panel>
+        <script>
+          (function() {
+            let currentColorIndex = 0;
+            const colors = ['red','yellow','blue','green'];
+            const controlPanel = document.querySelector('[duration="5"]');
+            setInterval(() => {
+              currentColorIndex++;
+              controlPanel.currentColor = colors[currentColorIndex % 4];
+            }, 5000);
+          })();
+        </script>
+      </code-sample>
+
+      <code-sample title="With NetworkTables">
+        <nt-string key="/panelColor" value="yellow"></nt-string>
+
+        <frc-control-panel source-key="/panelColor"></frc-control-panel>
+
+        <nt-string key="/panel2/currentColor" value="blue"></nt-string>
+        <nt-string key="/panel2/desiredColor" value="red"></nt-string>
+        <nt-boolean key="/panel2/clockwise" value="true"></nt-boolean>
+        <nt-number key="/panel2/duration" value="2"></nt-number>
+
+        <frc-control-panel source-key="/panel2"></frc-control-panel>
+      </code-sample>
+
+      <code-sample title="With styles">
+        <style>
+          .with-styles {
+            width: 500px;
+          }
+
+          .with-styles::part(control-panel) {
+            box-shadow: 20px 20px 10px 0px rgba(0,0,100,0.5);
+          }
+
+          .with-styles::part(indicator) {
+            display: none;
+          }
+        </style>
+        <frc-control-panel class="with-styles"></frc-control-panel>
+      </code-sample>
+
+      <!-- code for "Try it out" section -->
+      <h3>Try it out!</h3>
+
+      <nt-string key="/playground/currentColor" value="blue"></nt-string>
+      <nt-string key="/playground/desiredColor" value="red"></nt-string>
+      <nt-boolean key="/playground/clockwise" value="true"></nt-boolean>
+      <nt-number key="/playground/duration" value="2"></nt-number>
+
+      <frc-control-panel source-key="/playground"></frc-control-panel>
+
+
+      <div class="try-it-out">
+
+        <frc-text-field 
+          label="Current Color" 
+          theme="small" 
+          source-key="/playground/currentColor"
+        ></frc-text-field>
+
+        <frc-text-field 
+          label="Desired Color" 
+          theme="small" 
+          source-key="/playground/desiredColor"
+        ></frc-text-field>
+
+        <frc-number-field 
+          label="Duration" 
+          theme="small" 
+          source-key="/playground/duration"
+          has-controls
+        ></frc-number-field>
+
+        <frc-checkbox-group theme="horizontal">
+          <frc-checkbox source-key="/playground/clockwise">Clockwise</frc-checkbox>
+        </frc-checkbox-group>
+      </div>
+    </fwc-component-page>
+    <script src="../../component-page.js" type="module"></script>
+  </body>
+</html>

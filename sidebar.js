@@ -47,18 +47,19 @@ class FwcSidebar extends LitElement {
   constructor() {
     super();
     this.navs = [{
-      title: 'Charts and Graphs',
+      title: 'Charts & Graphs',
       components: [
         'Gauge',
         'Line Chart'
       ]
     }, {
-      title: 'Robot Info',
+      title: 'Robot & Field Info',
       components: [
         '3-Axis Accelerometer',
         'Accelerometer',
         'Basic FMS Info',
         'Basic Subsystem',
+        'Control Panel',
         'Differential Drivebase',
         'Encoder',
         'Gyro',
