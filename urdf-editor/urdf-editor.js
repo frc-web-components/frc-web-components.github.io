@@ -1,5 +1,6 @@
 
 var { LitElement, html, css } = window.webbit;
+var { getSource } = window.webbitStore;
 
 class UrdfEditor extends LitElement {
 
@@ -39,11 +40,38 @@ class UrdfEditor extends LitElement {
         flex: 1;
         height: 100%;
       }
+
+      [part=controls] {
+        padding: 5px;
+      }
     `;
+  }
+
+  static get properties() {
+    return {
+      urdfContent: { type: String },
+    };
   }
 
   constructor() {
     super();
+    this.urdfContent = '';
+  }
+
+  getTabNumber() {
+    return getSource('NetworkTables', '/editor/tab');
+  }
+
+  getCurrentEditor() {
+    const tabNumber = this.getTabNumber();
+    const tabContents = this.shadowRoot.querySelector('frc-tabs-content');
+    const currentTab = [...tabContents.children][tabNumber];
+    return currentTab.querySelector('frc-code-editor');   
+  }
+
+  onPreview() {
+    const currentEditor = this.getCurrentEditor();
+    this.urdfContent = currentEditor.content;
   }
 
   render() {
@@ -69,9 +97,17 @@ class UrdfEditor extends LitElement {
             <frc-code-editor mode="xml"></frc-code-editor>
           </frc-tab-content>
         </frc-tabs-content>
+        <div part="controls">
+          <vaadin-button 
+            theme="primary small"
+            @click="${this.onPreview}"
+          >
+            Preview URDF
+          </vaadin-button>
+        </div>
       </div>
       <frc-urdf-viewer 
-        urdf="./atlas/atlas_v4_with_multisense.urdf"
+        urdf-content="${this.urdfContent}"
         max-distance="1.6"
         min-distance="1.6"
         camera-x="0.5763096744435203" 
