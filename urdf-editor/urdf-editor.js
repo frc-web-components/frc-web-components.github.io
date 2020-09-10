@@ -14,7 +14,7 @@ class UrdfEditor extends LitElement {
       }
 
       [part=editor] {
-        width: 500px;
+        width: 600px;
         height: 100%;
         display: flex;
         flex-direction: column;
@@ -43,6 +43,12 @@ class UrdfEditor extends LitElement {
 
       [part=controls] {
         padding: 5px;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      [part=example-selector] {
+        width: 125px;
       }
     `;
   }
@@ -56,6 +62,10 @@ class UrdfEditor extends LitElement {
   constructor() {
     super();
     this.urdfContent = '';
+    this.examples = [
+      { title: 'Atlas', urdf: window.atlasUrdf },
+      { title: 'R2D2', urdf: window.r2d2Urdf },
+    ];
   }
 
   getTabNumber() {
@@ -72,6 +82,20 @@ class UrdfEditor extends LitElement {
   onPreview() {
     const currentEditor = this.getCurrentEditor();
     this.urdfContent = currentEditor.content;
+  }
+
+  getSelectedExampleUrdf() {
+    const exampleSelector = this.shadowRoot.querySelector('[part=example-selector]');
+    const urdfTitle = exampleSelector.value;
+    return this.examples
+      .find(({ title }) => title === urdfTitle)
+      .urdf;
+  }
+
+  onLoadExample() {
+    const urdf = this.getSelectedExampleUrdf();
+    const currentEditor = this.getCurrentEditor();
+    currentEditor.content = urdf;
   }
 
   render() {
@@ -98,21 +122,33 @@ class UrdfEditor extends LitElement {
           </frc-tab-content>
         </frc-tabs-content>
         <div part="controls">
-          <vaadin-button 
-            theme="primary small"
-            @click="${this.onPreview}"
-          >
-            Preview URDF
-          </vaadin-button>
+          <div>
+            <vaadin-button 
+              theme="primary small"
+              @click="${this.onPreview}"
+            >
+              Preview URDF
+            </vaadin-button>
+          </div>
+          <div>
+            <vaadin-combo-box 
+              part="example-selector"
+              theme="small"
+              .items="${this.examples.map(example => example.title)}" 
+              .value="${this.examples[0].title}"
+            ></vaadin-combo-box>
+            <vaadin-button 
+              theme="primary small"
+              @click="${this.onLoadExample}"
+            >
+              Load Example
+            </vaadin-button>
+           </div>
+
         </div>
       </div>
       <frc-urdf-viewer 
-        urdf-content="${this.urdfContent}"
-        max-distance="1.6"
-        min-distance="1.6"
-        camera-x="0.5763096744435203" 
-        camera-y="0.5127713744784664" 
-        camera-z="1.4555920814835674"
+        urdf-content="${this.urdfContent.trim()}"
         controllable
       ></frc-urdf-viewer>
     `;
