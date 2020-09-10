@@ -11,6 +11,7 @@ class UrdfEditor extends LitElement {
         width: 100vw;
         height: 100vh;
         align-items: stretch;
+        overflow: hidden;
       }
 
       [part=editor] {
