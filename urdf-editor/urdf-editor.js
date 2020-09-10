@@ -98,6 +98,19 @@ class UrdfEditor extends LitElement {
     currentEditor.content = urdf;
   }
 
+  onUrdfError(ev) {
+    const { detail } = ev;
+    this.showErrorNotification('Unable to preview URDF');
+    console.log('error:', detail);
+  }
+
+  showErrorNotification(textContent) {
+    // const notification = document.querySelector('vaadin-notification');
+    // notification.textContent = textContent;
+    // notification.open();
+    alert(textContent);
+  }
+
   render() {
     return html`
       <div part="editor">
@@ -147,9 +160,10 @@ class UrdfEditor extends LitElement {
 
         </div>
       </div>
-      <frc-urdf-viewer 
+      <frc-urdf-viewer
         urdf-content="${this.urdfContent.trim()}"
         controllable
+        @urdf-error="${this.onUrdfError}"
       ></frc-urdf-viewer>
     `;
   }
