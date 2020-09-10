@@ -65,18 +65,42 @@ class UrdfEditor extends LitElement {
     this.examples = [
       { title: 'Atlas', urdf: window.atlasUrdf },
       { title: 'R2D2', urdf: window.r2d2Urdf },
+      { title: 'PI Robot', urdf: window.piRobotUrdf },
     ];
+  }
+
+  saveUrdfs() {
+    const urdfs = [];
+
+    for (let i = 0; i < 4; i++) {
+      const editor = this.getEditor(i);
+      urdfs.push(editor.content);
+    }
+
+    window.localStorage['urdfs'] = JSON.stringify(urdfs);
+    alert('URDFs saved to local storage');
+  }
+
+  loadUrdfs() {
+    const urdfs = JSON.parse(window.localStorage['urdfs']) || [];
+    urdfs.forEach((urdf, index) => {
+      const editor = this.getEditor(index);
+      editor.content = urdf;
+    });
   }
 
   getTabNumber() {
     return getSource('NetworkTables', '/editor/tab');
   }
 
-  getCurrentEditor() {
-    const tabNumber = this.getTabNumber();
+  getEditor(index) {
     const tabContents = this.shadowRoot.querySelector('frc-tabs-content');
-    const currentTab = [...tabContents.children][tabNumber];
+    const currentTab = [...tabContents.children][index];
     return currentTab.querySelector('frc-code-editor');   
+  }
+
+  getCurrentEditor() {
+    return this.getEditor(this.getTabNumber());
   }
 
   onPreview() {
@@ -104,11 +128,19 @@ class UrdfEditor extends LitElement {
     console.log('error:', detail);
   }
 
+  onSave() {
+    this.saveUrdfs();
+  }
+
   showErrorNotification(textContent) {
     // const notification = document.querySelector('vaadin-notification');
     // notification.textContent = textContent;
     // notification.open();
     alert(textContent);
+  }
+
+  firstUpdated() {
+    this.loadUrdfs();
   }
 
   render() {
@@ -141,6 +173,12 @@ class UrdfEditor extends LitElement {
               @click="${this.onPreview}"
             >
               Preview URDF
+            </vaadin-button>
+            <vaadin-button 
+              theme="secondary small"
+              @click="${this.onSave}"
+            >
+              Save URDFs
             </vaadin-button>
           </div>
           <div>
