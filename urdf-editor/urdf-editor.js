@@ -12,8 +12,26 @@ class UrdfEditor extends LitElement {
         align-items: stretch;
       }
 
-      frc-code-editor {
+      [part=editor] {
         width: 500px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      frc-tabs-content {
+        flex: 1;
+        width: 100%;
+        height: 100%;
+      }
+
+      frc-tab-content {
+        width: 100%;
+        height: 100%;
+      }
+
+      frc-code-editor {
+        width: 100%;
         height: 100%;
       }
 
@@ -30,9 +48,28 @@ class UrdfEditor extends LitElement {
 
   render() {
     return html`
-      <frc-code-editor
-        mode="xml"
-      ></frc-code-editor>
+      <div part="editor">
+        <frc-tabs source-key="/editor/tab" theme="small minimal">
+          <frc-tab>URDF 1</frc-tab>
+          <frc-tab>URDF 2</frc-tab>
+          <frc-tab>URDF 3</frc-tab>
+          <frc-tab>URDF 4</frc-tab>
+        </frc-tabs>
+        <frc-tabs-content source-key="/editor/tab">
+          <frc-tab-content>
+            <frc-code-editor mode="xml"></frc-code-editor>
+          </frc-tab-content>
+          <frc-tab-content>
+            <frc-code-editor mode="xml"></frc-code-editor>
+          </frc-tab-content>
+          <frc-tab-content>
+            <frc-code-editor mode="xml"></frc-code-editor>
+          </frc-tab-content>
+          <frc-tab-content>
+            <frc-code-editor mode="xml"></frc-code-editor>
+          </frc-tab-content>
+        </frc-tabs-content>
+      </div>
       <frc-urdf-viewer 
         urdf="./atlas/atlas_v4_with_multisense.urdf"
         max-distance="1.6"
