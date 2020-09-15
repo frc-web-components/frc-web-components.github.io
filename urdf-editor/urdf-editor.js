@@ -67,6 +67,7 @@ class UrdfEditor extends LitElement {
       { title: 'Atlas', urdf: window.atlasUrdf },
       { title: 'R2D2', urdf: window.r2d2Urdf },
       { title: 'PI Robot', urdf: window.piRobotUrdf },
+      { title: 'Links tutorial', urdf: window.linksUrdf },
     ];
   }
 
