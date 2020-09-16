@@ -145,8 +145,8 @@ class UrdfEditor extends Webbit {
   }
 
   firstUpdated() {
-    this.loadUrdfs();
     this.resized();
+    this.loadUrdfs();
   }
 
   resized() {
