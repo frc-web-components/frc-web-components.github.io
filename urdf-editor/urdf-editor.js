@@ -1,8 +1,8 @@
 
-var { LitElement, html, css } = window.webbit;
+var { LitElement, html, css, Webbit } = window.webbit;
 var { getSource } = window.webbitStore;
 
-class UrdfEditor extends LitElement {
+class UrdfEditor extends Webbit {
 
   static get styles() {
     return css`
@@ -21,10 +21,13 @@ class UrdfEditor extends LitElement {
         flex-direction: column;
       }
 
+      frc-tabs {
+        display: block;
+      }
+
       frc-tabs-content {
-        flex: 1;
+        /* flex: 1; */
         width: 100%;
-        height: 100%;
       }
 
       frc-tab-content {
@@ -143,6 +146,26 @@ class UrdfEditor extends LitElement {
 
   firstUpdated() {
     this.loadUrdfs();
+  }
+
+  resized() {
+    const editorHeight = this
+      .shadowRoot.querySelector('[part=editor]')
+      .getBoundingClientRect()
+      .height;
+    const tabsHeight = this
+      .shadowRoot.querySelector('frc-tabs')
+      .getBoundingClientRect()
+      .height;
+    const controlsHeight = this
+      .shadowRoot.querySelector('[part=controls]')
+      .getBoundingClientRect()
+      .height;
+
+    console.log('heights:', editorHeight, tabsHeight, controlsHeight);
+
+    const tabsContent = this.shadowRoot.querySelector('frc-tabs-content');
+    tabsContent.style.height = `${editorHeight - tabsHeight - controlsHeight}px`;
   }
 
   render() {
