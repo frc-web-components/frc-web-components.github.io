@@ -1,13 +1,15 @@
 
 window.linksUrdf = `
+
 <!-- The root element in a URDF file must be a robot, 
 with all other elements must be encapsulated within. -->
 <robot name="myRobot">
 	
 	<!-- Materials defined outside of links can be resued
 	and referenced by name inside of links -->
-	<material name="red">
-		<color rgba="1 0 0 1" />
+	<material name="brick">
+		<!-- The texture of a material is specified by a filename -->
+		<texture filename="textures/bricks.jpg" />
 	</material>
 	<material name="blue">
 		<color rgba="0 0 1 1" />
@@ -63,7 +65,7 @@ with all other elements must be encapsulated within. -->
 				the cylinder is in its center. -->
 				<cylinder radius=".5" length="2" />
 			</geometry>
-			<material name="red" />
+			<material name="brick" />
 		</visual>
 	</link>
 	<link name="link3">
@@ -78,5 +80,18 @@ with all other elements must be encapsulated within. -->
 		</visual>
 	</link>
 	
+	<link name="link4">
+		<visual>
+			<origin xyz="0 0 1.5" rpy="1.57 0 0" />
+			<geometry>
+				<!-- Specify the radius and length. The origin of 
+				the cylinder is in its center. -->
+				<!--<cylinder radius=".5" length="2" />-->
+				<mesh filename="models/hotdog.obj" scale=".5 .5 .5" />
+			</geometry>
+		</visual>
+	</link>
+	
 </robot>
+
 `;
