@@ -107,6 +107,13 @@ window.jointsUrdf = `
 		<origin xyz="0 0 .32"/>
 	</joint>
 	
+	<joint name="shaftWheel1Joint" type="continuous">
+		<parent link="shaft" />
+		<child link="wheel1" />
+		<axis xyz="0 0 1"/>
+		<origin xyz="0 0 .32"/>
+	</joint>
+	
 	<joint name="shaftWheel2Joint" type="revolute">
 		<parent link="shaft" />
 		<child link="wheel2" />
@@ -114,12 +121,13 @@ window.jointsUrdf = `
 		<origin xyz="0 0 -.32"/>
 		<limit lower="-3.1416" upper="3.1416" />
 	</joint>
-	
-	<joint name="shaftWheel2Joint" type="fixed">
+
+	<joint name="wheelBoxJoint" type="fixed">
 		<parent link="wheel1" />
 		<child link="box" />
 		<origin xyz="0 0 .125"/>
 	</joint>
+	
 	
 	<joint name="rodJoint" type="prismatic">
 		<parent link="box" />
