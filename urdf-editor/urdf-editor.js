@@ -71,7 +71,8 @@ class UrdfEditor extends Webbit {
       { title: 'R2D2', urdf: window.r2d2Urdf },
       { title: 'PI Robot', urdf: window.piRobotUrdf },
       { title: 'Links tutorial', urdf: window.linksUrdf },
-      { title: 'Joints tutorial', urdf: window.jointsUrdf }
+      { title: 'Joints tutorial', urdf: window.jointsUrdf },
+      { title: 'Henrybot', urdf: window.henryBotUrdf },
     ];
   }
 
