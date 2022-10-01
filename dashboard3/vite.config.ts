@@ -4,8 +4,9 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   build: {
     lib: {
+      name: 'fwc',
       entry: 'src/index.ts',
-      formats: ['es']
+      formats: ['es', 'umd']
     },
     rollupOptions: {
       external: /^lit/
