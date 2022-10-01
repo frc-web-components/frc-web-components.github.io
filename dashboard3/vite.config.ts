@@ -7,9 +7,6 @@ export default defineConfig({
       name: 'fwc',
       entry: 'src/index.ts',
       formats: ['es', 'umd']
-    },
-    rollupOptions: {
-      external: /^lit/
     }
   }
 })
