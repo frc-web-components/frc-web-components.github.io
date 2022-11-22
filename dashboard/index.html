@@ -1,43 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-    <link rel="manifest" href="./manifest.webmanifest">  
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FRC Web Components</title>
+    <script type="module" src="./dash/dashboard.es.js"></script>
   </head>
   <body>
-
-    <script>
-      window.pwaHelper = {
-        deferredPrompt: null,
-        isPwa: false,
-      };
-
-      window.addEventListener('beforeinstallprompt', ev => {
-          // Stash the event so it can be triggered later.
-          window.pwaHelper.deferredPrompt = ev;
-      });
-
-      window.addEventListener('DOMContentLoaded', () => {
-        window.pwaHelper.isPwa = window.matchMedia('(display-mode: standalone)').matches;
-      });
-    </script>
-
-    <frc-dashboard-builder address-type="local" edit-mode>
-      <div dashboard-root></div>
-    </frc-dashboard-builder>
-    <script src="./frc-web-components.js"></script>
-
-    <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/dashboard/sw.js').then(registration => {
-            registration.update();
-            console.log('SW registered: ', registration);
-          }).catch(registrationError => {
-            console.log('SW registration failed: ', registrationError);
-          });
-        });
-      }
-    </script>
   </body>
 </html>
