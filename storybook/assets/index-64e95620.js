@@ -1,0 +1,6 @@
+import{r as c}from"./lit-element-ac510585.js";import{e as t}from"./query-assigned-elements-bd4ea1f7.js";import{N as f}from"./index-15bfa3e8.js";var l=Object.defineProperty,y=Object.getOwnPropertyDescriptor,v=Object.getPrototypeOf,b=Reflect.get,r=(s,p,i,a)=>{for(var o=a>1?void 0:a?y(p,i):p,u=s.length-1,m;u>=0;u--)(m=s[u])&&(o=(a?m(p,i,o):m(o))||o);return a&&o&&l(p,i,o),o},g=(s,p,i)=>b(v(s),i,p);const n=class extends f{constructor(){super(...arguments),this.value=0,this.min=0,this.max=5,this.center=0,this.precision=2,this.hideText=!1,this.numTickMarks=3,this.unit="V"}};let e=n;e.styles=[...g(n,n,"styles"),c`
+      [part='bar']::part(foreground) {
+        background: var(--frc-voltage-view-foreground-color, #ffbd2f);
+      }
+    `];r([t({type:Number})],e.prototype,"value",2);r([t({type:Number})],e.prototype,"min",2);r([t({type:Number})],e.prototype,"max",2);r([t({type:Number})],e.prototype,"center",2);r([t({type:Number})],e.prototype,"precision",2);r([t({type:Boolean,attribute:"hide-text"})],e.prototype,"hideText",2);r([t({type:Number,attribute:"num-tick-marks"})],e.prototype,"numTickMarks",2);r([t({type:String})],e.prototype,"unit",2);customElements.get("frc-voltage-view")||customElements.define("frc-voltage-view",e);
+//# sourceMappingURL=index-64e95620.js.map
