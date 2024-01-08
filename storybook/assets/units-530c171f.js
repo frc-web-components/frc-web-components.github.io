@@ -1,1 +1,0 @@
-const i="m",n={km:1e3,m:1,cm:.01,mm:.001,mi:1609.34,yd:.9144,ft:.3048,in:.0254},s={km:"km",m:"m",meters:"m",cm:"cm",centimeters:"cm",mm:"mm",mi:"mi",miles:"mi",yd:"yd",yards:"yards",ft:"ft",feet:"ft",foot:"ft",in:"in",inches:"in"},c=(t,e,m)=>(e=s[e],m=s[m],typeof n[e]>"u"&&(e=i),typeof n[m]>"u"&&(m=i),t*n[e]/n[m]);export{i as b,c,n as t};
